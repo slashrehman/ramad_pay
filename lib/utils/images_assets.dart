@@ -1,0 +1,1 @@
+const String logoAzizCard = 'assets/aziz_card_logo.jpg';
