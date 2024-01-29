@@ -13,6 +13,7 @@ const Color whiteColor = Color(0xFFFFFFFF);
 const Color errorColor = Color(0xFFF03434);
 const Color blackColor = Color.fromARGB(255, 37, 37, 37);
 const borderColor = Color.fromRGBO(23, 171, 144, 0.4);
+const Color grey400Color = Color(0xff8B939E);
 const MaterialColor primaryMaterialColor = MaterialColor(
   0xFF074f23,
   <int, Color>{

@@ -3,6 +3,7 @@ class FormValidator {
     return RegExp(r"^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$").hasMatch(email);
   }
 
+
   static bool passwordValidation(String password) {
     return RegExp(
         r"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&.])[A-Za-z\d@$!%*#?&.]{8,}$")

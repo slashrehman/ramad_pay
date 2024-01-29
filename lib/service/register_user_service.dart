@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:ramad_pay/utils/print_console.dart';
+import 'package:ramad_pay/utils/snack_bar.dart';
 
 import '../helpers/api_base_helpers.dart';
 import '../model/register_mobile_model.dart';
@@ -20,8 +21,10 @@ class RegisterService{
         return true;
       }else if(newsResponse.status ==400){
         printInConsole(data: "${parsed['errors']['mobile'][0]}");
+        showSnackBar("${parsed['errors']['mobile'][0]}");
         return false;
       }else{
+        showSnackBar("Unexpected Error");
         return false;
       }
   }
@@ -37,9 +40,11 @@ class RegisterService{
     if(newsResponse.result!.contains('Success')){
       return true;
     }else if(newsResponse.status ==400){
-      printInConsole(data: "${parsed['error']['mobile'][0]}");
+      printInConsole(data: "${parsed['error']}");
       return false;
     }else{
+      printInConsole(data: "jkjk${parsed['error']}");
+      showSnackBar("Unexpected Error");
       return false;
     }
   }
@@ -59,6 +64,7 @@ class RegisterService{
       printInConsole(data: "${parsed['error']['mobile'][0]}");
       return false;
     }else{
+      showSnackBar("Unexpected Error");
       return false;
     }
   }
