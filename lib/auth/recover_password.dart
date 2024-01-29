@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ramad_pay/app_basics/text_field.dart';
+import 'package:ramad_pay/auth/login/login_controller.dart';
 import 'package:ramad_pay/auth/sign_up_controller.dart';
+import 'package:ramad_pay/utils/loading_dialog.dart';
 
 import '../app_basics/colors.dart';
 import '../app_basics/formValidator.dart';
@@ -10,7 +12,7 @@ class PasswordResetScreen extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey();
 
   PasswordResetScreen({Key? key}) : super(key: key);
-  final controller = Get.find<SignUpController>();
+  final controller = Get.find<LoginController>();
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +23,11 @@ class PasswordResetScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
+              const SizedBox(height:60),
               const Row(
                 children: [
                   Text(
-                    'recovery_password',
+                    'Recovery Password',
                     style: TextStyle(
                       color: primaryColor,
                       fontSize: 32,
@@ -36,18 +39,21 @@ class PasswordResetScreen extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              // customTextLabel(
-              //   label: 'input_enter_your_email',
-              //   fontSize: 17,
-              //   color: accentColor4,
-              // ),
+              const Text(
+                'Enter your email',
+                style: TextStyle(
+                  fontSize: 17,
+                  color: accentColor4,
+                ),
+              ),
               const SizedBox(
                 height: 16,
               ),
               Form(
                 key: _formKey,
                 child: AppTextField(
-                  textEditingController: controller.recoveryEmail,
+                  border: true,
+                  textEditingController: controller.email,
                   hintText: "Email",
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -55,7 +61,6 @@ class PasswordResetScreen extends StatelessWidget {
                     } else if (!FormValidator.validateEmail(value)) {
                       return 'Please enter valid email';
                     }
-                    return null;
                   },
                 ),
               ),
@@ -68,7 +73,8 @@ class PasswordResetScreen extends StatelessWidget {
           child: InkWell(
             onTap: () {
               if (_formKey.currentState!.validate()) {
-
+                showLoadingDialog(context);
+                controller.sendRestPasswordOTPEmail();
               }
             },
             child: SizedBox(

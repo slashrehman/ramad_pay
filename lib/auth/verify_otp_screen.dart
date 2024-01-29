@@ -96,12 +96,14 @@ class VerifyOTPScreen extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.250666666,
                   ),
-                  Text(
-                    controller.start > 0 ? '00:${controller.start}' : "",
-                    style: GoogleFonts.getFont('Poppins').copyWith(
-                      color: Colors.black54,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
+                  Obx(
+                    ()=> Text(
+                      controller.start > 0 ? '00:${controller.start}' : "",
+                      style: GoogleFonts.getFont('Poppins').copyWith(
+                        color: Colors.black54,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ],
@@ -146,7 +148,7 @@ class VerifyOTPScreen extends StatelessWidget {
                   backgroundColor: Colors.blue[900],
                   minimumSize: const Size(300, 50),
                 ),
-                child: Text("Back".toUpperCase()),
+                child: Text("Verify".toUpperCase()),
               )
             ],
           ),

@@ -10,17 +10,19 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        return Future.value(false); // if true allow back else block it
+        return Future.value(true); // if true allow back else block it
       },
       child: Scaffold(
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text("User Signed in \n Home Screen"),
             const SizedBox(height: 20),
             AppCustomButton(
+              buttonText: "Logout",
               onTap: (){
-                Get.offAll(()=> LoginScreen());
+                Get.back();
               },
             ),
           ],

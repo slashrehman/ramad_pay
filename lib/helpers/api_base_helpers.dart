@@ -53,7 +53,7 @@ class ApiBaseHelper {
               headers: headers,
               body: jsonEncode(requestBody));
           printInConsole(data:
-              "Response -> ${responseJson.statusCode} -> ${responseJson}");
+              "Response -> ${responseJson.statusCode} -> ${responseJson.body}");
 
           return responseJson;
 

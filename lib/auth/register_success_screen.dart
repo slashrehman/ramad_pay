@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import '../app_basics/app_routes.dart';
 import '../app_basics/colors.dart';
 import '../app_basics/images.dart';
 
@@ -47,7 +48,7 @@ class RegisterSuccessScreen extends StatelessWidget {
               height: 40,
             ),
             const Text(
-              "Your account has been \n created successflly!",
+              "Your account has been \n created successfully!",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: "Poppins",
@@ -62,7 +63,7 @@ class RegisterSuccessScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 32.0),
               child: TextButton(
                 onPressed: (){
-
+                  Get.offNamed(AppRoutes.loginScreen);
                 },
                 style: ButtonStyle(
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -75,7 +76,7 @@ class RegisterSuccessScreen extends StatelessWidget {
                     backgroundColor: MaterialStateProperty.all(primaryColor)),
                 child: Text(
                   "Ok".toUpperCase(),
-                  style: TextStyle(color: whiteColor),
+                  style: const TextStyle(color: whiteColor),
                 ),
               ),
             )

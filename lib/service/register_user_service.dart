@@ -39,12 +39,9 @@ class RegisterService{
     RegisterMobileModel newsResponse = RegisterMobileModel.fromJson(parsed);
     if(newsResponse.result!.contains('Success')){
       return true;
-    }else if(newsResponse.status ==400){
-      printInConsole(data: "${parsed['error']}");
-      return false;
     }else{
-      printInConsole(data: "jkjk${parsed['error']}");
-      showSnackBar("Unexpected Error");
+      printInConsole(data: "${parsed['error']}");
+      showSnackBar("${parsed['error']}");
       return false;
     }
   }
@@ -58,10 +55,11 @@ class RegisterService{
         params: "");
     final parsed = json.decode(response.body);
     RegisterMobileModel newsResponse = RegisterMobileModel.fromJson(parsed);
-    if(newsResponse.result!.contains('Success')){
+    if(newsResponse.result!.contains('created')){
       return true;
-    }else if(newsResponse.status ==400){
-      printInConsole(data: "${parsed['error']['mobile'][0]}");
+    }else if(parsed['status'] == 400){
+      printInConsole(data: "${parsed['title']}");
+      showSnackBar("${parsed['title']}");
       return false;
     }else{
       showSnackBar("Unexpected Error");

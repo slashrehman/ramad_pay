@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:ramad_pay/app_basics/app_routes.dart';
 import 'package:ramad_pay/app_basics/text_field.dart';
 import 'package:ramad_pay/auth/login/login_controller.dart';
 import 'package:ramad_pay/auth/register_phone.dart';
+import 'package:ramad_pay/auth/sign_up_controller.dart';
+import 'package:ramad_pay/utils/loading_dialog.dart';
 import '../../app_basics/colors.dart';
 import '../../app_basics/formValidator.dart';
 import '../../app_basics/images.dart';
@@ -11,6 +14,7 @@ import '../../app_basics/images.dart';
 class LoginScreen extends StatelessWidget {
    LoginScreen({Key? key}) : super(key: key);
   final loginController = Get.put(LoginController());
+  final signupController = Get.put(SignUpController());
  final GlobalKey<FormState> _formKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
@@ -98,7 +102,9 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.passwordRecoveryScreen);
+                    },
                     child: Text(
                       "Forgot password?",
                       style: TextStyle(color: Colors.grey[600]),
@@ -152,6 +158,7 @@ class LoginScreen extends StatelessWidget {
         child: InkWell(
           onTap: () {
             if(_formKey.currentState!.validate()){
+              showLoadingDialog(context);
               loginController.loginUser();
             }
           },

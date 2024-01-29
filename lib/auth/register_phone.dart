@@ -13,7 +13,7 @@ import 'sign_up_controller.dart';
 
 class PhoneRegister extends StatelessWidget {
    PhoneRegister({Key? key}) : super(key: key);
-  final controller = Get.put(SignUpController());
+  final controller = Get.find<SignUpController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

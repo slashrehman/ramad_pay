@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:ramad_pay/utils/loading_dialog.dart';
-import '../app_basics/formValidator.dart';
-import '../app_basics/text_field.dart';
-import '../auth/sign_up_controller.dart';
+
 import '../app_basics/colors.dart';
+import '../app_basics/formValidator.dart';
 import '../app_basics/images.dart';
-
-
-class SignupScreen extends StatelessWidget {
+import '../app_basics/text_field.dart';
+import '../utils/loading_dialog.dart';
+import 'login/login_controller.dart';
+class ResetPasswordScreen extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey();
-   SignupScreen({Key? key}) : super(key: key);
-  final controller = Get.find<SignUpController>();
+  final controller  = Get.find<LoginController>();
+   ResetPasswordScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,56 +28,38 @@ class SignupScreen extends StatelessWidget {
               const Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  "Enter your details to continue",
+                  "Enter your details to reset your Password",
                   style: TextStyle(
-                      fontFamily: "PoppinsRegular",
-                      fontSize: 16.0,
-                      color: accentColor4,
-                    ),
+                    fontFamily: "PoppinsRegular",
+                    fontSize: 16.0,
+                    color: accentColor4,
+                  ),
                 ),
               ),
               const SizedBox(height: 8),
               AppTextField(
-                textEditingController: controller.firstName,
+                textEditingController: controller.userName,
                 validator: (v){
                   if(v.toString().isEmpty){
                     return "Please enter your first name";
                   }
                 },
-                hintText: "First Name",
-                labelText: "First Name",
+                hintText: "User name",
+                labelText: "User name",
                 border: true,
               ),
               const SizedBox(height: 16),
               AppTextField(
-                textEditingController: controller.middleName,
-                validator: (v){},
-                hintText: "Middle Name",
-                labelText: "Middle Name",
-                border: true,
-              ),
-              const SizedBox(height: 16),
-              AppTextField(
-                textEditingController: controller.lastName,
-                validator: (v){
-
-                },
-                hintText: "Last Name",
-                labelText: "Last Name",
-                border: true,
-              ),
-              const SizedBox(height: 16),
-              AppTextField(
-                textEditingController: controller.email,
+                textEditingController: controller.otp,
                 validator: (v){
                   if(v.toString().isEmpty){
-                    return "Please enter email address";
-                  }else if(!FormValidator.validateEmail(v)){
-                    return "Please enter valid email";
+                    return "Please enter OTP";
+                  }else if(v.toString().length < 6){
+                    return "OTP is Six digit";
                   }
                 },
-                hintText: "Email",
-                labelText: "Email",
+                hintText: "OTP",
+                labelText: "OTP",
                 border: true,
               ),
               const SizedBox(height: 16),
@@ -87,7 +69,7 @@ class SignupScreen extends StatelessWidget {
                   if(v.toString().isEmpty){
                     return "Please enter password";
                   }else if(!FormValidator.passwordValidation(v)){
-                    return "Please enter valid email";
+                    return "Please enter valid password";
                   }
                 },
                 hintText: "Password",
@@ -102,7 +84,7 @@ class SignupScreen extends StatelessWidget {
                   if(v.toString().isEmpty){
                     return "Please enter confirm password";
                   }else if(!FormValidator.passwordValidation(v)){
-                    return "Please enter valid password";
+                    return "Please enter valid email";
                   }else if(v.toString() != controller.password.text){
                     return "Confirm Password didn't match password";
                   }
@@ -118,7 +100,7 @@ class SignupScreen extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-             const Text(
+              const Text(
                 "Your email will be used as your login username and to recover your password.",
                 textAlign: TextAlign.center,
                 style: TextStyle(color: accentColor4, fontSize: 12.0),
@@ -130,7 +112,7 @@ class SignupScreen extends StatelessWidget {
                 onPressed: (){
                   if(_formKey.currentState!.validate()){
                     showLoadingDialog(context);
-                    controller.registerUser();
+                    controller.sendRestPasswordOTPEmail();
                   }
                 },
                 style: TextButton.styleFrom(
