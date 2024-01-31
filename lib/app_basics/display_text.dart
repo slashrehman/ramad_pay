@@ -1,0 +1,1 @@
+const String generalErrorText = "Oops! Something went wrong";

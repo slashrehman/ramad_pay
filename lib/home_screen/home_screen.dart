@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ramad_pay/app_basics/app_button.dart';
-import 'package:ramad_pay/auth/login/login_screen.dart';
+
+import 'home_screen_controller.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
+   HomeScreen({Key? key}) : super(key: key);
+  final controller = Get.put(HomeScreenController());
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -22,7 +23,8 @@ class HomeScreen extends StatelessWidget {
             AppCustomButton(
               buttonText: "Logout",
               onTap: (){
-                Get.back();
+                controller.getCountries();
+                // Get.back();
               },
             ),
           ],

@@ -1,13 +1,15 @@
 import 'dart:convert';
+import 'package:ramad_pay/app_basics/display_text.dart';
+import 'package:ramad_pay/helpers/shared_pref_helper.dart';
+import 'package:ramad_pay/model/base_response_model.dart';
 import 'package:ramad_pay/model/login_success_model.dart';
 import 'package:ramad_pay/utils/snack_bar.dart';
-
 import '../helpers/api_base_helpers.dart';
-import '../model/register_mobile_model.dart';
 import '../utils/end_points.dart';
 
 class LoginService{
   final ApiBaseHelper _service = ApiBaseHelper();
+  SharedPref _sharedPref =  SharedPref();
   Future<bool> loginUser({required var requestBody}) async {
     try {
       final response = await _service.httpRequest(
@@ -16,11 +18,13 @@ class LoginService{
           requestBody: requestBody,
           params: "");
       final parsed = json.decode(response.body);
-      LoginSuccessModel loginSuccessModel = LoginSuccessModel.fromJson(parsed);
-      if(loginSuccessModel.accessToken !=''){
+      LoginSuccessModel loginSuccessModel = loginSuccessModelFromJson(response.body);
+      if(loginSuccessModel.status){
+        _sharedPref.saveString(SharedPref.accessToken, loginSuccessModel.data.accesstoken);
+        _sharedPref.saveString(SharedPref.refreshToken, loginSuccessModel.data.refreshtoken);
         return true;
       }else{
-        showSnackBar('${parsed['error']}');
+        showSnackBar(loginSuccessModel.message!);
         return false;
       }
     } catch (e) {
@@ -35,12 +39,11 @@ class LoginService{
           requestType: getRequest,
           params: "?email=$email");
       final parsed = json.decode(response.body);
-      print("$parsed 89898 \n ${parsed['result']}");
-      // LoginSuccessModel loginSuccessModel = LoginSuccessModel.fromJson(parsed);
-      if(parsed['result'].toString().toUpperCase() == 'OK'){
+      BaseResponseModel loginSuccessModel = baseResponseModel(parsed);
+      if(loginSuccessModel.status){
         return true;
       }else{
-        showSnackBar('Error');
+        showSnackBar(generalErrorText);
         return false;
       }
     } catch (e) {
@@ -55,11 +58,11 @@ class LoginService{
           requestBody: requestBody,
           params: "");
       final parsed = json.decode(response.body);
-      LoginSuccessModel loginSuccessModel = LoginSuccessModel.fromJson(parsed);
-      if(loginSuccessModel.accessToken !=''){
+      BaseResponseModel resetData = baseResponseModel(parsed);
+      if(resetData.status){
         return true;
       }else{
-        showSnackBar('${parsed['error']}');
+        showSnackBar('${resetData.message}');
         return false;
       }
     } catch (e) {

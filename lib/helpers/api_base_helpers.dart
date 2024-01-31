@@ -29,7 +29,7 @@ class ApiBaseHelper {
         File? filePath,
         required String params}) async {
     printInConsole(data: '$requestType : ${endPoint.url} ${jsonEncode(requestBody)}');
-    var token = await _sharedPref.readString(_sharedPref.tokenKey??"");
+    var token = await _sharedPref.readString(SharedPref.accessToken??"");
     try {
       final headers = getHeaders(token: token);
       printInConsole(data:
@@ -114,7 +114,7 @@ class ApiBaseHelper {
     Map<String, String> headers = {};
     headers.putIfAbsent('Content-Type', () => 'application/json');
     headers.putIfAbsent('Accept', () => 'application/json');
-    headers.putIfAbsent('x-auth-token', () => token ?? '');
+    headers.putIfAbsent('Authorization', () => "Bearer $token");
     return headers;
   }
 

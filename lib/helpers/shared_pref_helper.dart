@@ -4,7 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPref {
   static const String userKey = "UserModel";
-    String tokenKey = "userToken";
+  static const String tokenKey = "userToken";
+  static const  String accessToken = "accessToken";
+  static const  String refreshToken = "refreshToken";
   static const String themeKey = "DarkTheme";
 
   readObject(String key) async {
