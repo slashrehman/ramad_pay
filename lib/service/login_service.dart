@@ -39,7 +39,7 @@ class LoginService{
           requestType: getRequest,
           params: "?email=$email");
       final parsed = json.decode(response.body);
-      BaseResponseModel loginSuccessModel = baseResponseModel(parsed);
+      BaseResponseModel loginSuccessModel = baseResponseModel(response.body);
       if(loginSuccessModel.status){
         return true;
       }else{

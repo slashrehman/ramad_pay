@@ -23,6 +23,7 @@ class ResetPasswordScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const SizedBox(height: 40,),
               SvgPicture.asset(registerAccount),
               const SizedBox(height: 8),
               const Align(
@@ -112,7 +113,7 @@ class ResetPasswordScreen extends StatelessWidget {
                 onPressed: (){
                   if(_formKey.currentState!.validate()){
                     showLoadingDialog(context);
-                    controller.sendRestPasswordOTPEmail();
+                    controller.resetUserPassword();
                   }
                 },
                 style: TextButton.styleFrom(
