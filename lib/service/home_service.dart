@@ -43,7 +43,17 @@ class HomeService{
   Future<bool> getOccupation({ required String countryCode}) async{
     try{
       final response = await _service.httpRequest(
-          endPoint: EndPoints.getOccupation, requestType: getRequest, params: '?ccode=$countryCode');
+          endPoint: EndPoints.getOccupation, requestType: getRequest, params: '');
+      return true;
+    }catch(e){
+      return false;
+    }
+  }
+
+  Future<bool> getNationalities({ required String countryCode}) async{
+    try{
+      final response = await _service.httpRequest(
+          endPoint: EndPoints.getNationalities, requestType: getRequest, params: '');
       return true;
     }catch(e){
       return false;

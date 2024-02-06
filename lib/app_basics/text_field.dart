@@ -34,6 +34,7 @@ class AppTextField extends StatelessWidget {
      @override
      Widget build(BuildContext context) {
           return  TextFormField(
+               style: TextStyle(color: Colors.black),
                autovalidateMode: AutovalidateMode.onUserInteraction,
                obscureText: obscureText,
                validator: (value)=>validator(value),

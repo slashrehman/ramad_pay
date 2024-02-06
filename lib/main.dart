@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:ramad_pay/app_basics/app_routes.dart';
 import 'package:ramad_pay/app_basics/colors.dart';
+import 'package:ramad_pay/home_screen/main_screen.dart';
 import 'auth/login/login_screen.dart';
+import 'home_screen/profile_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +24,8 @@ class MyApp extends StatelessWidget {
       ),
       getPages: AppRoutes.appNamedRoutes,
       color: primaryMaterialColor,
-      home:  LoginScreen(),
+      // home:  LoginScreen(),
+      home:  MainScreen(),
     );
   }
 }

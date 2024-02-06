@@ -2,6 +2,7 @@ import 'package:ramad_pay/auth/recover_password.dart';
 import 'package:ramad_pay/auth/signup_form.dart';
 import 'package:ramad_pay/auth/verify_otp_screen.dart';
 import 'package:ramad_pay/home_screen/home_screen.dart';
+import 'package:ramad_pay/home_screen/main_screen.dart';
 import '../auth/login/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -19,6 +20,7 @@ class AppRoutes {
   static const String passwordRecoveryScreen = "/passwordRecoveryScreen";
   static const String resetPasswordScreen = "/resetPasswordScreen";
   static const String homeScreen = "/homeScreen";
+  static const String mainScreen = "/mainScreen";
 
   static List<GetPage> appNamedRoutes = [
     GetPage(name: loginScreen, page: () => LoginScreen()),
@@ -27,6 +29,6 @@ class AppRoutes {
     GetPage(name: registerSuccessScreen, page: () => RegisterSuccessScreen()),
     GetPage(name: passwordRecoveryScreen, page: () => PasswordResetScreen()),
     GetPage(name: homeScreen, page: () => HomeScreen()),
-    GetPage(name: resetPasswordScreen, page: () => ResetPasswordScreen()),
+    GetPage(name: mainScreen, page: () => MainScreen()),
   ];
 }

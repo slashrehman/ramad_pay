@@ -25,7 +25,7 @@ class LoginController extends GetxController{
     loginService.loginUser(requestBody: requestBody).then((value) {
       if(value){
         closeLoadingDialog();
-        Get.toNamed(AppRoutes.homeScreen);
+        Get.toNamed(AppRoutes.mainScreen);
       }else{
         closeLoadingDialog();
       }
