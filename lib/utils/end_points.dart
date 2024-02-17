@@ -5,13 +5,17 @@ enum EndPoints {
   login('auth/login'),
   sendResetPasswordOTP('auth/ResetPasswordOTP'),
   resetPassword('auth/ResetPassOTP'),
-  //user
+  //USER
   getUserProfile('user/getUserProfile'),
   getCountries('user/getCustCountries'),
   getStates('user/getCustStates'),
   getOccupation('user/getCustOccupations'),
   getNationalities('user/getNationalities'),
   addEditCustomer('user/addEditCustomer'),
+  getDocumentsType('user/getDocTypes'),
+  uploadUserDocuments('user/UploadFile'),
+  //Beneficiaries
+  addEditBeneficiaries('api/ben/addEditBeneficiary'),
   ;
 
   final String url;

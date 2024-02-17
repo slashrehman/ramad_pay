@@ -6,6 +6,7 @@ const Color primaryColor = Color(0xFF074f23);
 const Color secondaryColor = Color(0xFFF1592A);
 const Color outlineColor = Color(0xFF074f33);
 const Color accentColor1 = Color(0xFF757575);
+const Color greyColor = Color.fromRGBO(110, 118, 129, 1);
 const Color accentColor2 = Color(0xFFD8D8D8);
 const Color accentColor3 = Color(0xFFC5C5C7);
 const Color accentColor4 = Color(0xFF98989C);

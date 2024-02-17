@@ -34,7 +34,6 @@ class ApiBaseHelper {
       final headers = getHeaders(token: token);
       printInConsole(data:
           "Request -> $requestType -> ${Uri.parse(liveBaseUrl+ endPoint.url + params)}");
-      printInConsole(data:"headers -> $headers");
       switch (requestType) {
         case getRequest:
           final responseJson = await http.get(
@@ -67,7 +66,7 @@ class ApiBaseHelper {
           http.StreamedResponse responseJson = await request.send();
 
           var streamedResponse = await http.Response.fromStream(responseJson);
-          printInConsole(data: streamedResponse.body);
+          printInConsole(data: streamedResponse.body +"sss");
           removeException();
 
           return streamedResponse;

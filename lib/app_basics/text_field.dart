@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ramad_pay/app_basics/colors.dart';
 
 class AppTextField extends StatelessWidget {
      AppTextField({
@@ -9,7 +10,7 @@ class AppTextField extends StatelessWidget {
           this.enabled = true,
           this.obscureText = false,
           this.prefixIcon,
-          this.keyboardType,
+          this.keyboardType = TextInputType.text,
           this.maxLines = 1,
           this.suffixIcon,
           this.border = false,
@@ -20,7 +21,7 @@ class AppTextField extends StatelessWidget {
      }) : super(key: key);
      final String initialValue , hintText,labelText;
      var  prefixIcon;
-     var keyboardType;
+     TextInputType keyboardType;
      final int maxLines;
      final bool border ;
      final bool obscureText;
@@ -34,6 +35,9 @@ class AppTextField extends StatelessWidget {
      @override
      Widget build(BuildContext context) {
           return  TextFormField(
+               onTapOutside: (val){
+                    FocusScope.of(context).unfocus();
+               },
                style: TextStyle(color: Colors.black),
                autovalidateMode: AutovalidateMode.onUserInteraction,
                obscureText: obscureText,
@@ -48,6 +52,12 @@ class AppTextField extends StatelessWidget {
                maxLines: maxLines,
                decoration: InputDecoration(
                     border: border == true ? OutlineInputBorder(
+                         borderRadius :BorderRadius.circular(30.0),
+                    ): null,
+                    disabledBorder: border == true ? OutlineInputBorder(
+                         borderSide: const BorderSide(
+                              color: grey400Color
+                         ),
                          borderRadius :BorderRadius.circular(30.0),
                     ): null,
                     hintText: hintText,

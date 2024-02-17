@@ -9,7 +9,7 @@ import '../utils/end_points.dart';
 
 class LoginService{
   final ApiBaseHelper _service = ApiBaseHelper();
-  SharedPref _sharedPref =  SharedPref();
+  final SharedPref _sharedPref =  SharedPref();
   Future<bool> loginUser({required var requestBody}) async {
     try {
       final response = await _service.httpRequest(

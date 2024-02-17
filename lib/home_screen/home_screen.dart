@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
             AppCustomButton(
               buttonText: "Logout",
               onTap: (){
-                controller.getCountries();
+                // controller.getCountries();
                 // Get.back();
               },
             ),

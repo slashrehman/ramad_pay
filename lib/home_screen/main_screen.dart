@@ -45,21 +45,21 @@ class MainScreen extends StatelessWidget {
                 BottomNavigationBarItem(
                     icon: SvgPicture.asset(
                       logoPath,
-                      color: grey400Color,
                       height: 32,
+                      color: greyColor,
                     ),
                     label: "a"),
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                     icon: Icon(
                       Icons.offline_bolt,
                     ),
                     label: "b"),
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                     icon: Icon(
                       Icons.radar,
                     ),
                     label: "c"),
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                     icon: Icon(
                       Icons.person,
                     ),

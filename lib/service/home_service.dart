@@ -1,62 +1,66 @@
-import 'dart:convert';
-
-import 'package:ramad_pay/utils/print_console.dart';
-
+import 'package:ramad_pay/model/base_response_model.dart';
+import 'package:ramad_pay/model/country_list_model.dart';
+import 'package:ramad_pay/model/states_model.dart';
 import '../helpers/api_base_helpers.dart';
+import '../model/user_profile_model.dart';
 import '../utils/end_points.dart';
 
-class HomeService{
+class HomeService {
   final ApiBaseHelper _service = ApiBaseHelper();
-  Future<bool> getCountries() async {
-    try {
-      final response = await _service.httpRequest(
-          endPoint: EndPoints.getCountries,
-          requestType: getRequest,
-          params: "");
-      final parsed = json.decode(response.body);
-      // // LoginSuccessModel loginSuccessModel = loginSuccessModelFromJson(parsed);
-      // if(loginSuccessModel.status){
-      //   _sharedPref.saveString(SharedPref.accessToken, loginSuccessModel.data.accesstoken);
-      //   _sharedPref.saveString(SharedPref.refreshToken, loginSuccessModel.data.refreshtoken);
-      //   return true;
-      // }else{
-      //   showSnackBar(loginSuccessModel.message!);
-      //   return false;
-      // }
-      printInConsole(data: parsed);
-      return true;
-    } catch (e) {
-      return false;
-    }
-  }
-  Future<bool> getCountryStates({ required String countryCode}) async{
-    try{
+
+  Future<CountryListModel> getCountries() async {
     final response = await _service.httpRequest(
-        endPoint: EndPoints.getStates, requestType: getRequest, params: '?ccode=$countryCode');
-    return true;
-    }catch(e){
-      return false;
-    }
+        endPoint: EndPoints.getCountries, requestType: getRequest, params: "");
+    CountryListModel countryListModel = countryListModelFromJson(response.body);
+    return countryListModel;
   }
 
-
-  Future<bool> getOccupation({ required String countryCode}) async{
-    try{
-      final response = await _service.httpRequest(
-          endPoint: EndPoints.getOccupation, requestType: getRequest, params: '');
-      return true;
-    }catch(e){
-      return false;
-    }
+  Future<BasicListModel> getCountryStates({required String countryCode}) async {
+    final response = await _service.httpRequest(
+        endPoint: EndPoints.getStates,
+        requestType: getRequest,
+        params: '?ccode=$countryCode');
+    BasicListModel countryStates = basicListModelFromJson(response.body);
+    return countryStates;
   }
 
-  Future<bool> getNationalities({ required String countryCode}) async{
-    try{
-      final response = await _service.httpRequest(
-          endPoint: EndPoints.getNationalities, requestType: getRequest, params: '');
-      return true;
-    }catch(e){
+  Future<UserProfileModel> getCustomer() async {
+    final response = await _service.httpRequest(
+        endPoint: EndPoints.getUserProfile,
+        requestType: getRequest,
+        params: '');
+    UserProfileModel userProfileModel = userProfileModelFromJson(response.body);
+    return userProfileModel;
+  }
+
+  Future<BasicListModel> getOccupation() async {
+    final response = await _service.httpRequest(
+        endPoint: EndPoints.getOccupation, requestType: getRequest, params: '');
+    BasicListModel occupations = basicListModelFromJson(response.body);
+    return occupations;
+  }
+
+  Future<BasicListModel> getNationalities() async {
+    final response = await _service.httpRequest(
+        endPoint: EndPoints.getNationalities,
+        requestType: getRequest,
+        params: '');
+    BasicListModel nationalities = basicListModelFromJson(response.body);
+    return nationalities;
+  }
+
+  Future<bool> saveUserDetails(var requestBody) async {
+    final response = await _service.httpRequest(
+        endPoint: EndPoints.addEditCustomer,
+        requestType: postRequest,
+        requestBody: requestBody,
+        params: '');
+
+    BaseResponseModel responseModel = baseResponseModel(response.body);
+    if(responseModel.status == 400){
       return false;
+    }else{
+      return true;
     }
   }
 }
