@@ -15,7 +15,11 @@ enum EndPoints {
   getDocumentsType('user/getDocTypes'),
   uploadUserDocuments('user/UploadFile'),
   //Beneficiaries
-  addEditBeneficiaries('api/ben/addEditBeneficiary'),
+  getBeneficiariesList('ben/getBeneficiaries'),
+  addEditBeneficiaries('ben/addEditBeneficiary'),
+  getBenCountries('ben/getbenCountries'),
+  getBenCities('ben/getbenCities'),
+  getBenStates('ben/getbenStates'),
   ;
 
   final String url;

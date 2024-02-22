@@ -20,8 +20,9 @@ class ProfileTile extends StatelessWidget {
             child: TextFormField(
               textAlign: TextAlign.right,
               decoration: const InputDecoration(
-                  border: InputBorder.none
+                  border: InputBorder.none,
               ),
+              style: TextStyle(color: Colors.black),
               enabled: enabled,
               controller: value,
               validator: (value) {},

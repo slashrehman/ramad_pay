@@ -13,11 +13,12 @@ class AppCustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
+      minWidth: screenWidth - 32,
       onPressed: onTap,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
-      color: primaryColor,
+      color: greenShade,
       height: 50,
       // minWidth: screenWidth - 60,
       child: Text(buttonText, style: const TextStyle(color:whiteColor)),

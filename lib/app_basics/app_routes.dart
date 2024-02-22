@@ -7,6 +7,7 @@ import '../auth/login/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import '../auth/register_success_screen.dart';
+import '../home_screen/beneficiaries/add_beneficiaries_screen.dart';
 import '../home_screen/profile/documents_screen/add_documents_screen.dart';
 import '../home_screen/profile/edit_profile_screen.dart';
 
@@ -23,6 +24,7 @@ class AppRoutes {
   static const String mainScreen = "/mainScreen";
   static const String editProfileScreen = "/editProfileScreen";
   static const String addDocumentsScreen = "/addDocumentsScreen";
+  static const String addBeneficiariesScreen = "/addBeneficiariesScreen";
 
   static List<GetPage> appNamedRoutes = [
     GetPage(name: loginScreen, page: () => LoginScreen()),
@@ -34,5 +36,6 @@ class AppRoutes {
     GetPage(name: mainScreen, page: () => MainScreen()),
     GetPage(name: editProfileScreen, page: () => EditProfileScreen()),
     GetPage(name: addDocumentsScreen, page: () => AddDocumentsScreen()),
+    GetPage(name: addBeneficiariesScreen, page: () => AddBeneficiariesScreen()),
   ];
 }

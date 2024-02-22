@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ramad_pay/app_basics/app_routes.dart';
 import 'package:ramad_pay/app_basics/display_text.dart';
 import 'package:ramad_pay/model/basic_list_model.dart';
 import 'package:intl/intl.dart';
 import 'package:ramad_pay/utils/print_console.dart';
 import 'package:ramad_pay/utils/snack_bar.dart';
-
 import '../../model/user_profile_model.dart';
 import '../../service/home_service.dart';
 class ProfileController extends GetxController with StateMixin {
@@ -108,9 +106,7 @@ class ProfileController extends GetxController with StateMixin {
       "LastName": lastName!.text,
       "address": address.text,
       "Address_2": '',
-      //1995-05-15T00:00:00
       "DateOfBirth": DateFormat('yyyy-MM-ddTHH:mm:ss').format(dob),
-      // "DateOfBirth": "1995-05-15T00:00:00",
       "Email": email!.text,
       "Mobile": phone!.text,
       "City": city.text,

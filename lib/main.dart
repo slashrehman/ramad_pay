@@ -11,7 +11,7 @@ import 'home_screen/profile/profile_screen.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   final SharedPref _sharedPref = SharedPref();
-  var token = await _sharedPref.readString(SharedPref.accessToken??"");
+  var token = await _sharedPref.readString(SharedPref.accessToken);
   runApp( MyApp(token:token));
 }
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       ),
       getPages: AppRoutes.appNamedRoutes,
       color: primaryMaterialColor,
-      home: token == '' ? LoginScreen() : MainScreen(),
+      home: token == '' || token =="null" ? LoginScreen() : MainScreen(),
       // home:  EditProfileScreen(),
     );
   }

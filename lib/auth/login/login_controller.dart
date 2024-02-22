@@ -7,8 +7,8 @@ import '/service/login_service.dart';
 import '/utils/loading_dialog.dart';
 
 class LoginController extends GetxController{
-  TextEditingController phone = TextEditingController();
-  TextEditingController loginPassword = TextEditingController();
+  TextEditingController phone = TextEditingController(text: "slash.rehman@gmail.com");
+  TextEditingController loginPassword = TextEditingController(text: "Slash.123");
   RxBool obscureText = true.obs;
   LoginService loginService = LoginService();
   TextEditingController password = TextEditingController();

@@ -28,12 +28,12 @@ class MainScreen extends StatelessWidget {
               //   color: Colors.black,
               //   size: 36
               // ),
-              showSelectedLabels: false,
+              showSelectedLabels: true,
               backgroundColor: primaryColor,
               type: BottomNavigationBarType.fixed,
-              showUnselectedLabels: false,
-              selectedLabelStyle: const TextStyle(color: Colors.green),
-              unselectedLabelStyle: const TextStyle(color: Colors.black),
+              showUnselectedLabels: true,
+              selectedLabelStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+              unselectedLabelStyle:  TextStyle(color: grey400Color, fontWeight: FontWeight.w500),
               currentIndex: controller.selectedIndex.value,
               onTap: (value) {
                 controller.selectedIndex.value = value;
@@ -48,22 +48,22 @@ class MainScreen extends StatelessWidget {
                       height: 32,
                       color: greyColor,
                     ),
-                    label: "a"),
+                    label: "Beneficiaries"),
                 const BottomNavigationBarItem(
                     icon: Icon(
                       Icons.offline_bolt,
                     ),
-                    label: "b"),
+                    label: "Remittance"),
                 const BottomNavigationBarItem(
                     icon: Icon(
                       Icons.radar,
                     ),
-                    label: "c"),
+                    label: "Fx Rate"),
                 const BottomNavigationBarItem(
                     icon: Icon(
                       Icons.person,
                     ),
-                    label: "d"),
+                    label: "Account"),
               ]),
         ),
       ),

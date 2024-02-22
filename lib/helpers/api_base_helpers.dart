@@ -66,7 +66,7 @@ class ApiBaseHelper {
           http.StreamedResponse responseJson = await request.send();
 
           var streamedResponse = await http.Response.fromStream(responseJson);
-          printInConsole(data: streamedResponse.body +"sss");
+          printInConsole(data: "${streamedResponse.body}\nsss");
           removeException();
 
           return streamedResponse;

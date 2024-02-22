@@ -121,8 +121,8 @@ class EditProfileScreen extends StatelessWidget {
                         ()=> buildTypeAheadField(
                         list: profileController.occupations.value,
                         textEditingController: profileController.occupation,
-                        onSelected: (country){
-                          profileController.occupation.text= country.value;
+                        onSelected: (occupation){
+                          profileController.occupation.text= occupation.value;
                         },
                         label: "Occupation"
                     ),
@@ -193,7 +193,7 @@ class EditProfileScreen extends StatelessWidget {
             width: double.infinity,
             child: Center(
               child: Text(
-                "Log In",
+                "SAVE",
                 style: TextStyle(color: Colors.white, fontSize: 18.0),
               ),
             ),

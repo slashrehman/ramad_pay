@@ -9,15 +9,27 @@ class FxRateScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      body: Center(
-
-        child: MaterialButton(
-            child: Text("Logout"),
-            onPressed: (){
-              Get.deleteAll();
-              Get.offAllNamed(AppRoutes.loginScreen);
-            }),
-
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Align(
+              alignment: Alignment.center,
+              child: Text("Note : this is demo screen UI will be updated soon\n \n \n  Logout to Signin Agian")),
+          SizedBox(height: 20,),
+          MaterialButton(
+              child: Text("Logout"),
+              onPressed: (){
+                Get.deleteAll();
+                Get.offAllNamed(AppRoutes.loginScreen);
+              }),
+          // MaterialButton(
+          //     child: Text("Add Benficeriy"),
+          //     onPressed: (){
+          //       Get.deleteAll();
+          //       Get.toNamed(AppRoutes.addBeneficiariesScreen);
+          //     }),
+        ],
       ),
     );
   }
