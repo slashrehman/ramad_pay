@@ -8,9 +8,9 @@ import 'package:ramad_pay/home_screen/remittance_screen.dart';
 class MainScreenController extends GetxController{
   RxInt selectedIndex = 0.obs;
   List<Widget> screens = <Widget>[
+    const RemittanceScreen(),
     BeneficiariesScreen(),
-    RemittanceScreen(),
-    FxRateScreen(),
-    ProfileScreen(),
+    const FxRateScreen(),
+    // ProfileScreen(),
   ];
 }

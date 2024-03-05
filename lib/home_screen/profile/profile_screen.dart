@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ramad_pay/app_basics/app_button.dart';
 import 'package:ramad_pay/app_basics/app_routes.dart';
+import 'package:ramad_pay/app_basics/colors.dart';
 import 'package:ramad_pay/app_basics/images.dart';
 import 'package:ramad_pay/home_screen/profile/profile_controller.dart';
 import 'package:get/get.dart';
@@ -17,6 +18,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: primaryColor,
         automaticallyImplyLeading: false,
         title:  Text("Profile", style: headingTextStyle),
         actions: [
@@ -28,6 +30,19 @@ class ProfileScreen extends StatelessWidget {
               icon: const Icon(Icons.edit)
           )
         ],
+
+        leading: GestureDetector(
+          onTap: (){
+            Get.back();
+          },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 2.0),
+            child: SvgPicture.asset(backButton),
+          ),
+
+        ),
+        leadingWidth: 35,
+
       ),
       body: controller.obx(
         (state)=> Padding(

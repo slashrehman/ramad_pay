@@ -7,6 +7,7 @@ import 'auth/login/login_screen.dart';
 import 'helpers/shared_pref_helper.dart';
 import 'home_screen/profile/edit_profile_screen.dart';
 import 'home_screen/profile/profile_screen.dart';
+import 'home_screen/remittance_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,11 +27,12 @@ class MyApp extends StatelessWidget {
       title: 'Ramad Pay',
       navigatorKey: navigatorKey,
       theme: ThemeData(
-        useMaterial3: true,
+        useMaterial3: false,
       ),
       getPages: AppRoutes.appNamedRoutes,
       color: primaryMaterialColor,
       home: token == '' || token =="null" ? LoginScreen() : MainScreen(),
+      // home: RemittanceScreen(),
       // home:  EditProfileScreen(),
     );
   }

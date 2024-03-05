@@ -1,15 +1,10 @@
-import 'dart:ffi';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:ramad_pay/app_basics/app_button.dart';
 import 'package:ramad_pay/app_basics/text_field.dart';
 import 'package:ramad_pay/model/basic_list_model.dart';
-import 'package:ramad_pay/model/login_success_model.dart';
-import 'package:ramad_pay/utils/utils.dart';
 import '../../../app_basics/colors.dart';
 import '../../../app_basics/images.dart';
 import '../../../utils/loading_dialog.dart';

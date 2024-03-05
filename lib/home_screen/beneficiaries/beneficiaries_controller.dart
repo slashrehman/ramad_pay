@@ -67,7 +67,7 @@ class BeneficiariesController extends GetxController with StateMixin{
     final DateTime? picked = await showDatePicker(
       context: context,
       // initialDate: dob,
-      firstDate: DateTime(2015, 8),
+      firstDate: DateTime(1940, 1),
       lastDate: DateTime(2030),
     );
     if (picked != null && picked != dob) {

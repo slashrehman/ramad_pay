@@ -28,6 +28,31 @@ TextStyle grey12W500() {
         fontWeight: FontWeight.w500),
   );
 }
+TextStyle primaryColor14W500() {
+  return GoogleFonts.inter(
+    textStyle: TextStyle(
+        color:  primaryColor,
+        fontSize: 14,
+        fontWeight: FontWeight.w500),
+  );
+}
+TextStyle grey14W500() {
+  return GoogleFonts.inter(
+    textStyle: TextStyle(
+        color:  greyColor,
+        fontSize: 14,
+        fontWeight: FontWeight.w500),
+  );
+}
+
+TextStyle grey16W500() {
+  return GoogleFonts.inter(
+    textStyle: TextStyle(
+        color:  greyColor,
+        fontSize: 16,
+        fontWeight: FontWeight.w500),
+  );
+}
 
 TextStyle  underlineTextStyle = const TextStyle(
 decoration: TextDecoration.underline,

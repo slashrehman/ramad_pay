@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:ramad_pay/app_basics/app_routes.dart';
+import 'package:ramad_pay/app_basics/images.dart';
 import 'package:ramad_pay/home_screen/profile/profile_controller.dart';
+import 'package:ramad_pay/utils/loading_dialog.dart';
 
 class FxRateScreen extends StatelessWidget {
   const FxRateScreen({super.key});
@@ -13,10 +16,11 @@ class FxRateScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Align(
+          const Align(
               alignment: Alignment.center,
-              child: Text("Note : this is demo screen UI will be updated soon\n \n \n  Logout to Signin Agian")),
+              child: Text("Note : this is demo screen UI will be updated soon\n \n \n  Logout to Sign in again")),
           SizedBox(height: 20,),
+          // SvgPicture.asset(logoPath),
           MaterialButton(
               child: Text("Logout"),
               onPressed: (){

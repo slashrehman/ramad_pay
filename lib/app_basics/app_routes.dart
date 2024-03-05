@@ -1,8 +1,10 @@
+import 'package:get/get.dart';
 import 'package:ramad_pay/auth/recover_password.dart';
 import 'package:ramad_pay/auth/signup_form.dart';
 import 'package:ramad_pay/auth/verify_otp_screen.dart';
 import 'package:ramad_pay/home_screen/home_screen.dart';
 import 'package:ramad_pay/home_screen/main_screen.dart';
+import 'package:ramad_pay/home_screen/profile/profile_screen.dart';
 import '../auth/login/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -23,6 +25,7 @@ class AppRoutes {
   static const String homeScreen = "/homeScreen";
   static const String mainScreen = "/mainScreen";
   static const String editProfileScreen = "/editProfileScreen";
+  static const String profileScreen = "/profileScreen";
   static const String addDocumentsScreen = "/addDocumentsScreen";
   static const String addBeneficiariesScreen = "/addBeneficiariesScreen";
 
@@ -37,5 +40,6 @@ class AppRoutes {
     GetPage(name: editProfileScreen, page: () => EditProfileScreen()),
     GetPage(name: addDocumentsScreen, page: () => AddDocumentsScreen()),
     GetPage(name: addBeneficiariesScreen, page: () => AddBeneficiariesScreen()),
+    GetPage(name: profileScreen, page: () => ProfileScreen(), transition: Transition.fade),
   ];
 }

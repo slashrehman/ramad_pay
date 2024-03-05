@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:ramad_pay/home_screen/profile/profile_controller.dart';
 import 'package:ramad_pay/utils/text_styles.dart';
 import '../../app_basics/colors.dart';
 import '../../app_basics/formValidator.dart';
+import '../../app_basics/images.dart';
 import '../../app_basics/text_field.dart';
 import '../../utils/loading_dialog.dart';
 import '../../widgets/type_ahead_widget.dart';
@@ -18,8 +20,22 @@ class EditProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Edit Customer Details", style: headingTextStyle),
+      backgroundColor: primaryColor,
+      automaticallyImplyLeading: false,
+      title:  Text("Edit Profile", style: headingTextStyle),
+      leading: GestureDetector(
+        onTap: (){
+          Get.back();
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+          child: SvgPicture.asset(backButton),
+        ),
+
       ),
+      leadingWidth: 35,
+
+    ),
       body: profileController.obx(
         (state)=> SingleChildScrollView(
           padding: const EdgeInsets.all(16),
