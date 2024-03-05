@@ -6,9 +6,11 @@ import 'package:ramad_pay/app_basics/images.dart';
 import 'package:ramad_pay/home_screen/profile/profile_controller.dart';
 import 'package:ramad_pay/utils/loading_dialog.dart';
 
-class FxRateScreen extends StatelessWidget {
-  const FxRateScreen({super.key});
+import '../helpers/shared_pref_helper.dart';
 
+class FxRateScreen extends StatelessWidget {
+   FxRateScreen({super.key});
+  final SharedPref _sharedPref = SharedPref();
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -25,6 +27,7 @@ class FxRateScreen extends StatelessWidget {
               child: Text("Logout"),
               onPressed: (){
                 Get.deleteAll();
+                _sharedPref.remove(SharedPref.accessToken);
                 Get.offAllNamed(AppRoutes.loginScreen);
               }),
           // MaterialButton(

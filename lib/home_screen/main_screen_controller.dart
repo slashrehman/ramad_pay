@@ -10,7 +10,7 @@ class MainScreenController extends GetxController{
   List<Widget> screens = <Widget>[
     const RemittanceScreen(),
     BeneficiariesScreen(),
-    const FxRateScreen(),
+     FxRateScreen(),
     // ProfileScreen(),
   ];
 }
