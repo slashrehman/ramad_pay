@@ -17,7 +17,7 @@ TypeAheadField<DataModel> buildTypeAheadField(
               labelText: label,
               contentPadding: const EdgeInsets.all(8),
               border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30)
+                  borderRadius: BorderRadius.circular(12)
               )
           ),
         );

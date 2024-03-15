@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:ramad_pay/app_basics/app_button.dart';
 import 'package:ramad_pay/app_basics/app_routes.dart';
 import 'package:ramad_pay/app_basics/text_field.dart';
 import 'package:ramad_pay/auth/login/login_controller.dart';
@@ -114,6 +115,16 @@ class LoginScreen extends StatelessWidget {
                 ],
               ),
             ),
+            AppCustomButton(
+              onTap: (){
+                if(_formKey.currentState!.validate()){
+                  showLoadingDialog(context);
+                  loginController.loginUser();
+                }
+              },
+              buttonText: "Login",
+            ),
+            const SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -148,33 +159,33 @@ class LoginScreen extends StatelessWidget {
                       ),
                     );
                   },
-                )
+                ),
               ],
             )
           ],
         ),
       ),
-      bottomNavigationBar: Material(
-        color: primaryColor,
-        child: InkWell(
-          onTap: () {
-            if(_formKey.currentState!.validate()){
-              showLoadingDialog(context);
-              loginController.loginUser();
-            }
-          },
-          child: const SizedBox(
-            height: 50.0,
-            width: double.infinity,
-            child: Center(
-              child: Text(
-                "Log In",
-                style: TextStyle(color: Colors.white, fontSize: 18.0),
-              ),
-            ),
-          ),
-        ),
-      ),
+      // bottomNavigationBar: Material(
+      //   color: primaryColor,
+      //   child: InkWell(
+      //     onTap: () {
+      //       if(_formKey.currentState!.validate()){
+      //         showLoadingDialog(context);
+      //         loginController.loginUser();
+      //       }
+      //     },
+      //     child: const SizedBox(
+      //       height: 50.0,
+      //       width: double.infinity,
+      //       child: Center(
+      //         child: Text(
+      //           "Log In",
+      //           style: TextStyle(color: Colors.white, fontSize: 18.0),
+      //         ),
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 }

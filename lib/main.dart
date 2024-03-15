@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:ramad_pay/app_basics/app_routes.dart';
 import 'package:ramad_pay/app_basics/colors.dart';
@@ -7,10 +8,13 @@ import 'auth/login/login_screen.dart';
 import 'helpers/shared_pref_helper.dart';
 import 'home_screen/profile/edit_profile_screen.dart';
 import 'home_screen/profile/profile_screen.dart';
-import 'home_screen/remittance_screen.dart';
+import 'home_screen/home_screen_view.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   final SharedPref _sharedPref = SharedPref();
   var token = await _sharedPref.readString(SharedPref.accessToken);
   runApp( MyApp(token:token));
@@ -32,7 +36,7 @@ class MyApp extends StatelessWidget {
       getPages: AppRoutes.appNamedRoutes,
       color: primaryMaterialColor,
       home: token == '' || token =="null" ? LoginScreen() : MainScreen(),
-      // home: RemittanceScreen(),
+      // home: ProfileScreen(),
       // home:  EditProfileScreen(),
     );
   }

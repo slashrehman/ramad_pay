@@ -20,6 +20,9 @@ enum EndPoints {
   getBenCountries('ben/getbenCountries'),
   getBenCities('ben/getbenCities'),
   getBenStates('ben/getbenStates'),
+
+  //Remittance
+  getBenKeyValue('remitt/getBenKeyvalue')
   ;
 
   final String url;

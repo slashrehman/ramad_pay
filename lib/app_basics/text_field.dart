@@ -52,13 +52,13 @@ class AppTextField extends StatelessWidget {
                maxLines: maxLines,
                decoration: InputDecoration(
                     border: border == true ? OutlineInputBorder(
-                         borderRadius :BorderRadius.circular(30.0),
+                         borderRadius :BorderRadius.circular(12.0),
                     ): null,
                     disabledBorder: border == true ? OutlineInputBorder(
                          borderSide: const BorderSide(
                               color: grey400Color
                          ),
-                         borderRadius :BorderRadius.circular(30.0),
+                         borderRadius :BorderRadius.circular(12.0),
                     ): null,
                     hintText: hintText,
                     labelText: labelText,

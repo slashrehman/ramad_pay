@@ -135,7 +135,7 @@ class MainScreen extends StatelessWidget {
                       Icons.radar,
                       color: Colors.white,
                     ),
-                    label: "Fx Rate"),
+                    label: "Remittance"),
               ],
             ),
           ),

@@ -38,7 +38,7 @@ class UserProfileModel {
 
 class Data {
   Cust cust;
-  dynamic docs;
+  List<Doc>? docs;
   dynamic benlist;
 
   Data({
@@ -49,7 +49,7 @@ class Data {
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
     cust: Cust.fromJson(json["cust"]),
-    docs: json["docs"],
+    docs: json["docs"] == null ? [] : List<Doc>.from(json["docs"]!.map((x) => Doc.fromJson(x))),
     benlist: json["benlist"],
   );
 
@@ -59,7 +59,53 @@ class Data {
     "benlist": benlist,
   };
 }
+class Doc {
+  int? documentType;
+  int? custId;
+  String? documentNumber;
+  DateTime? issueDate;
+  DateTime? expiryDate;
+  String? country;
+  String? orgName;
+  String? fileId;
+  String? docTypeDesc;
 
+  Doc({
+    this.documentType,
+    this.custId,
+    this.documentNumber,
+    this.issueDate,
+    this.expiryDate,
+    this.country,
+    this.orgName,
+    this.fileId,
+    this.docTypeDesc,
+  });
+
+  factory Doc.fromJson(Map<String, dynamic> json) => Doc(
+    documentType: json["DocumentType"],
+    custId: json["CustId"],
+    documentNumber: json["DocumentNumber"],
+    issueDate: json["IssueDate"] == null ? null : DateTime.parse(json["IssueDate"]),
+    expiryDate: json["ExpiryDate"] == null ? null : DateTime.parse(json["ExpiryDate"]),
+    country: json["Country"],
+    orgName: json["OrgName"],
+    fileId: json["FileID"],
+    docTypeDesc: json["DocTypeDesc"],
+  );
+
+  Map<String, dynamic> toJson() => {
+    "DocumentType": documentType,
+    "CustId": custId,
+    "DocumentNumber": documentNumber,
+    "IssueDate": issueDate?.toIso8601String(),
+    "ExpiryDate": expiryDate?.toIso8601String(),
+    "Country": country,
+    "OrgName": orgName,
+    "FileID": fileId,
+    "DocTypeDesc": docTypeDesc,
+  };
+}
 class Cust {
   int refNo;
   String firstName;

@@ -4,7 +4,9 @@ import 'package:ramad_pay/auth/signup_form.dart';
 import 'package:ramad_pay/auth/verify_otp_screen.dart';
 import 'package:ramad_pay/home_screen/home_screen.dart';
 import 'package:ramad_pay/home_screen/main_screen.dart';
+import 'package:ramad_pay/home_screen/profile/documents_screen/documents_screen_view.dart';
 import 'package:ramad_pay/home_screen/profile/profile_screen.dart';
+import 'package:ramad_pay/home_screen/remittance_screen/add_remittance_view.dart';
 import '../auth/login/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -28,6 +30,8 @@ class AppRoutes {
   static const String profileScreen = "/profileScreen";
   static const String addDocumentsScreen = "/addDocumentsScreen";
   static const String addBeneficiariesScreen = "/addBeneficiariesScreen";
+  static const String documentsScreen = "/documentsScreen";
+  static const String addRemittanceView = "/addRemittanceView";
 
   static List<GetPage> appNamedRoutes = [
     GetPage(name: loginScreen, page: () => LoginScreen()),
@@ -39,7 +43,9 @@ class AppRoutes {
     GetPage(name: mainScreen, page: () => MainScreen()),
     GetPage(name: editProfileScreen, page: () => EditProfileScreen()),
     GetPage(name: addDocumentsScreen, page: () => AddDocumentsScreen()),
+    GetPage(name: documentsScreen, page: () => ViewDocumentsScreen()),
     GetPage(name: addBeneficiariesScreen, page: () => AddBeneficiariesScreen()),
+    GetPage(name: addRemittanceView, page: () => AddRemittanceView()),
     GetPage(name: profileScreen, page: () => ProfileScreen(), transition: Transition.fade),
   ];
 }

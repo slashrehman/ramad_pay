@@ -9,6 +9,7 @@ import '../../../app_basics/colors.dart';
 import '../../../app_basics/images.dart';
 import '../../../utils/loading_dialog.dart';
 import '../../../utils/text_styles.dart';
+import '../../../widgets/app_back_button.dart';
 import '../documents_screen/add_documents_controller.dart';
 
 class AddDocumentsScreen extends StatelessWidget {
@@ -21,7 +22,12 @@ class AddDocumentsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Customer Documents", style: headingTextStyle),
+        elevation: 0,
+        backgroundColor: primaryColor,
+        automaticallyImplyLeading: false,
+        title: Text("Add Documents", style: headingTextStyle),
+        leading: const AppBackButton(),
+        leadingWidth: 35,
       ),
       body: controller.obx(
         (state) => SingleChildScrollView(
@@ -57,7 +63,7 @@ class AddDocumentsScreen extends StatelessWidget {
                                 child: Image.file(controller.image)),
                         title: Text(
                             controller.imagePath.value == ''
-                                ? 'Select ${controller.fileTitle.value}'
+                                ? ' ${controller.fileTitle.value}'
                                 : controller.fileTitle.value,
                             style: black16W600),
                         subtitle: Text("${controller.imageSize.value} KB",
@@ -137,18 +143,17 @@ class AddDocumentsScreen extends StatelessWidget {
                       border: true,
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 16),
                   Obx(
                       ()=> CustomDropDown(
                         onSelected: (value){
-                          print("kshkshksj");
                           controller.selectedCountry = value;
                         },
                         list: controller.countriesList.value,
                       title: "Country",
                     ),
                   ),
-                  SizedBox(height: 30,),
+                  const SizedBox(height: 30,),
                   AppCustomButton(
                     onTap: (){
                       if(_formKey.currentState!.validate()){
@@ -192,7 +197,7 @@ class CustomDropDown extends StatelessWidget {
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
               border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(30)))),
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(12)))),
       child: DropdownMenu<DataModel>(
           expandedInsets: const EdgeInsets.symmetric(horizontal: 8),
           onSelected: (value) => onSelected(value!),

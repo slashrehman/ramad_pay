@@ -4,9 +4,9 @@ import 'package:ramad_pay/app_basics/images.dart';
 
 import '../app_basics/colors.dart';
 
-Container buildProfileAvatar({required double borderRadius}) => Container(
-      width: 45.0,
-      height: 45.0,
+Container buildProfileAvatar({required double borderRadius, double width = 45.0, double height = 45.0}) => Container(
+      width: width,
+      height: height,
       decoration: BoxDecoration(
         color: primaryColor,
         border: Border.all(color: whiteColor, width: 1.0),

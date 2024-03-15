@@ -21,7 +21,7 @@ class ProfileController extends GetxController with StateMixin {
   TextEditingController userState = TextEditingController();
   TextEditingController occupation = TextEditingController();
   TextEditingController nationality = TextEditingController();
-
+UserProfileModel? userProfileModel;
   RxList<DataModel> occupations = <DataModel>[].obs;
   RxList<DataModel> nationalities = <DataModel>[].obs;
   RxList<DataModel> countryListModel = <DataModel>[].obs;
@@ -53,6 +53,7 @@ class ProfileController extends GetxController with StateMixin {
     _homeService.getCustomer().then((value) async{
       if(value.status){
         await setUserData(userProfileModel: value);
+        userProfileModel = value;
       }else{
         change(null,status: RxStatus.error(generalErrorText));
       }
