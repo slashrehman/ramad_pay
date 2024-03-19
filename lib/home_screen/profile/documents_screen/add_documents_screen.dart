@@ -204,11 +204,15 @@ class CustomDropDown extends StatelessWidget {
           label:  Text(title),
           dropdownMenuEntries:
               List.generate(list.length, (index) {
-            return DropdownMenuEntry(
+            return (DropdownMenuEntry(
+              label: "${list[index].value}",
               value: list[index],
-              label: list[index].value,
-            );
-          })),
+              labelWidget: Text("${list[index].value}", maxLines: 10,  overflow: TextOverflow.ellipsis, textWidthBasis: TextWidthBasis.longestLine,
+              style: TextStyle(overflow: TextOverflow.ellipsis, ),
+              ),
+            ));
+          }),
+      ),
     );
   }
 }

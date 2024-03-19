@@ -25,6 +25,12 @@ enum EndPoints {
   getBenKeyValue('remitt/getBenKeyvalue'),
   getRemittanceLookupValues('remitt/getlookupValues'),
   getRemittanceList('remitt/getRemittanceList'),
+  getAgencyCode('remitt/getAgent?'),
+  getPayModeCurrency('remitt/getAgentPayModeCurrency?'),
+  postRemittance('remitt/PostRemitance'),
+
+  //Juba
+  getBenSendingCity('juba/getBenCities?'),
   ;
 
   final String url;

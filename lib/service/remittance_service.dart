@@ -1,4 +1,7 @@
+import 'package:ramad_pay/model/get_paymode_currency_model.dart';
+
 import '../helpers/api_base_helpers.dart';
+import '../model/basic_list_model.dart';
 import '../model/remittance_list_model.dart';
 import '../model/remittance_lookup_values.dart';
 import '../model/states_model.dart';
@@ -24,6 +27,31 @@ class RemittanceService{
     BasicListModel data = basicListModelFromJson(response.body);
     return data;
   }
+  Future<List<DataModel>> getBenSendingCity(String benId) async {
+    final response = await _service.httpRequest(
+        endPoint: EndPoints.getBenSendingCity,
+        requestType: getRequest,
+        params: 'benId=$benId');
+    List<DataModel> data = dataModelListModelFromJson(response.body);
+    return data;
+  }
+
+  Future<BasicListModel> getAgencyCode(String city) async {
+    final response = await _service.httpRequest(
+        endPoint: EndPoints.getAgencyCode,
+        requestType: getRequest,
+        params: 'city=$city');
+    BasicListModel data = basicListModelFromJson(response.body);
+    return data;
+  }
+  Future<GetPayModeCurrencyModel> getPayModeCurrency(String agnt) async {
+    final response = await _service.httpRequest(
+        endPoint: EndPoints.getPayModeCurrency,
+        requestType: getRequest,
+        params: 'agnt=$agnt');
+    GetPayModeCurrencyModel data = getPayModeCurrencyModelFromJson(response.body);
+    return data;
+  }
 
   Future<RemittanceLookUpValues> getLookUpValues() async {
     final response = await _service.httpRequest(
@@ -32,5 +60,13 @@ class RemittanceService{
         params: '');
     RemittanceLookUpValues remittanceLookUpValues = remittanceLookUpValuesFromJson(response.body);
     return remittanceLookUpValues;
+  }
+
+  void postRemittance(var data)async{
+    final response = await _service.httpRequest(
+        endPoint: EndPoints.postRemittance,
+        requestType: postRequest,
+        requestBody: data,
+        params: '');
   }
 }

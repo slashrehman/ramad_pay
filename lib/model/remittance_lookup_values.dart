@@ -1,8 +1,9 @@
 import 'dart:convert';
 
+import 'package:ramad_pay/model/basic_list_model.dart';
+
 RemittanceLookUpValues remittanceLookUpValuesFromJson(String str) => RemittanceLookUpValues.fromJson(json.decode(str));
 
-String remittanceLookUpValuesToJson(RemittanceLookUpValues data) => json.encode(data.toJson());
 
 class RemittanceLookUpValues {
   bool? status;
@@ -24,20 +25,14 @@ class RemittanceLookUpValues {
     timestamp: json["timestamp"] == null ? null : DateTime.parse(json["timestamp"]),
   );
 
-  Map<String, dynamic> toJson() => {
-    "status": status,
-    "message": message,
-    "data": data?.toJson(),
-    "timestamp": timestamp?.toIso8601String(),
-  };
 }
 
 class Data {
-  List<BeneficiaryRefNo>? purposesOfPay;
-  List<BeneficiaryRefNo>? sourceOfIncome;
-  List<BeneficiaryRefNo>? incomeSourceType;
-  List<BeneficiaryRefNo>? paymentMethod;
-  List<BeneficiaryRefNo>? beneficiaryRefNos;
+  List<DataModel>? purposesOfPay;
+  List<DataModel>? sourceOfIncome;
+  List<DataModel>? incomeSourceType;
+  List<DataModel>? paymentMethod;
+  List<DataModel>? beneficiaryRefNos;
 
   Data({
     this.purposesOfPay,
@@ -48,38 +43,11 @@ class Data {
   });
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-    purposesOfPay: json["purposesOfPay"] == null ? [] : List<BeneficiaryRefNo>.from(json["purposesOfPay"]!.map((x) => BeneficiaryRefNo.fromJson(x))),
-    sourceOfIncome: json["sourceOfIncome"] == null ? [] : List<BeneficiaryRefNo>.from(json["sourceOfIncome"]!.map((x) => BeneficiaryRefNo.fromJson(x))),
-    incomeSourceType: json["IncomeSourceType"] == null ? [] : List<BeneficiaryRefNo>.from(json["IncomeSourceType"]!.map((x) => BeneficiaryRefNo.fromJson(x))),
-    paymentMethod: json["PaymentMethod"] == null ? [] : List<BeneficiaryRefNo>.from(json["PaymentMethod"]!.map((x) => BeneficiaryRefNo.fromJson(x))),
-    beneficiaryRefNos: json["BeneficiaryRefNos"] == null ? [] : List<BeneficiaryRefNo>.from(json["BeneficiaryRefNos"]!.map((x) => BeneficiaryRefNo.fromJson(x))),
+    purposesOfPay: json["purposesOfPay"] == null ? [] : List<DataModel>.from(json["purposesOfPay"]!.map((x) => DataModel.fromJson(x))),
+    sourceOfIncome: json["sourceOfIncome"] == null ? [] : List<DataModel>.from(json["sourceOfIncome"]!.map((x) => DataModel.fromJson(x))),
+    incomeSourceType: json["IncomeSourceType"] == null ? [] : List<DataModel>.from(json["IncomeSourceType"]!.map((x) => DataModel.fromJson(x))),
+    paymentMethod: json["PaymentMethod"] == null ? [] : List<DataModel>.from(json["PaymentMethod"]!.map((x) => DataModel.fromJson(x))),
+    beneficiaryRefNos: json["BeneficiaryRefNos"] == null ? [] : List<DataModel>.from(json["BeneficiaryRefNos"]!.map((x) => DataModel.fromJson(x))),
   );
 
-  Map<String, dynamic> toJson() => {
-    "purposesOfPay": purposesOfPay == null ? [] : List<dynamic>.from(purposesOfPay!.map((x) => x.toJson())),
-    "sourceOfIncome": sourceOfIncome == null ? [] : List<dynamic>.from(sourceOfIncome!.map((x) => x.toJson())),
-    "IncomeSourceType": incomeSourceType == null ? [] : List<dynamic>.from(incomeSourceType!.map((x) => x.toJson())),
-    "PaymentMethod": paymentMethod == null ? [] : List<dynamic>.from(paymentMethod!.map((x) => x.toJson())),
-    "BeneficiaryRefNos": beneficiaryRefNos == null ? [] : List<dynamic>.from(beneficiaryRefNos!.map((x) => x.toJson())),
-  };
-}
-
-class BeneficiaryRefNo {
-  String? key;
-  String? value;
-
-  BeneficiaryRefNo({
-    this.key,
-    this.value,
-  });
-
-  factory BeneficiaryRefNo.fromJson(Map<String, dynamic> json) => BeneficiaryRefNo(
-    key: json["key"],
-    value: json["value"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "key": key,
-    "value": value,
-  };
 }

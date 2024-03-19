@@ -1,4 +1,10 @@
 
+
+import 'dart:convert';
+
+List<DataModel> dataModelListModelFromJson(String str) => List<DataModel>.from(json.decode(str).map((x) => DataModel.fromJson(x)));
+
+
 class DataModel {
   String key;
   String value;

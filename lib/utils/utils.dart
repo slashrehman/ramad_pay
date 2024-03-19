@@ -5,6 +5,7 @@ double appBarElevation = 0.0;
 final screenWidth = MediaQuery.of(navigatorKey.currentContext!).size.width;
 final screenHeight = MediaQuery.of(navigatorKey.currentContext!).size.height;
 
+SizedBox widgetVerticalPadding = SizedBox(height: 12);
 
 String getImageSize(File filePath){
   final fileSizeInBytes = filePath.lengthSync();
