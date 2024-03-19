@@ -22,7 +22,9 @@ enum EndPoints {
   getBenStates('ben/getbenStates'),
 
   //Remittance
-  getBenKeyValue('remitt/getBenKeyvalue')
+  getBenKeyValue('remitt/getBenKeyvalue'),
+  getRemittanceLookupValues('remitt/getlookupValues'),
+  getRemittanceList('remitt/getRemittanceList'),
   ;
 
   final String url;
