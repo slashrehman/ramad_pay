@@ -30,6 +30,7 @@ class AddRemittanceView extends StatelessWidget {
             children: [
               CustomDropDown(
                 onSelected: (value) {
+                  controller.beneficiary = value;
                   controller.getBenSendingCity(value.key);
                 },
                 list: controller.beneficiariesList.value,
@@ -39,6 +40,7 @@ class AddRemittanceView extends StatelessWidget {
               Obx(
                 ()=> CustomDropDown(
                   onSelected: (value) {
+                    controller.sendingCitySelected= value;
                     controller.getCorrAgencyCode(value.key);
                   },
                   list: controller.sendingCity.value,
@@ -49,6 +51,7 @@ class AddRemittanceView extends StatelessWidget {
               Obx(
                 ()=> CustomDropDown(
                   onSelected: (value) {
+                    controller.selectedAgency = value;
                     controller.getPayModeCurrency(value.key);
                   },
                   list: controller.corrAgencyCode.value,
@@ -58,7 +61,10 @@ class AddRemittanceView extends StatelessWidget {
               widgetVerticalPadding,
               Obx(
                 ()=> CustomDropDown(
-                  onSelected: (value) {},
+                  onSelected: (value) {
+                    controller.payOutCurrencySelected =value;
+                    controller.exchangeRate.text = value.value;
+                  },
                   list: controller.payOutCurrency.value,
                   title: "Payout Currency",
                 ),
@@ -67,25 +73,33 @@ class AddRemittanceView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: AppTextField(
+                  readOnly: true,
+                  textEditingController: controller.exchangeRate,
                   border: true,
                     labelText: "Exchange Rate",
                     validator: (validator){}),
               ),
               widgetVerticalPadding,
               CustomDropDown(
-                onSelected: (value) {},
+                onSelected: (value) {
+                  controller.receiverModeOfPayment = value;
+                },
                 list: controller.payMode.value,
                 title: "Receiver Mode of Payment",
               ),
               widgetVerticalPadding,
               CustomDropDown(
-                onSelected: (value) {},
+                onSelected: (value) {
+                  controller.purpose = value;
+                },
                 list: controller.purposeOfPay.value,
                 title: "Purpose",
               ),
               widgetVerticalPadding,
               CustomDropDown(
-                onSelected: (value) {},
+                onSelected: (value) {
+                  controller.sourceOfIncomeSelected = value;
+                },
                 list: controller.sourceOfIncome.value,
                 title: "Source of Income",
               ),
@@ -95,16 +109,19 @@ class AddRemittanceView extends StatelessWidget {
                 child: Column(
                   children: [
                     AppTextField(
+                      textEditingController: controller.payOutAmount,
                       border: true,
                         labelText: "Payout Amount",
                         validator: (validator){}),
                     widgetVerticalPadding,
                     AppTextField(
+                      textEditingController: controller.ramadCommission,
                       border: true,
                         labelText: "Ramad Commission",
                         validator: (validator){}),
                     widgetVerticalPadding,
                     AppTextField(
+                      textEditingController: controller.totalAmount,
                       border: true,
                         labelText: "Total Amount",
                         validator: (validator){}),
@@ -114,26 +131,31 @@ class AddRemittanceView extends StatelessWidget {
                         child: Column(
                       children: [
                         AppTextField(
+                          textEditingController: controller.benAccountNum,
                             border: true,
                             labelText: "Beneficiary account No.",
                             validator: (validator){}),
                         widgetVerticalPadding,
                         AppTextField(
+                          textEditingController: controller.benAccountTitle,
                             border: true,
                             labelText: "Beneficiary account Title",
                             validator: (validator){}),
                         widgetVerticalPadding,
                         AppTextField(
+                          textEditingController: controller.benBankName,
                             border: true,
                             labelText: "Beneficiary Bank Name",
                             validator: (validator){}),
                         widgetVerticalPadding,
                         AppTextField(
+                          textEditingController: controller.benBankAddress,
                             border: true,
                             labelText: "Beneficiary Bank address",
                             validator: (validator){}),
                         widgetVerticalPadding,
                         AppTextField(
+                          textEditingController: controller.benSwiftCode,
                             border: true,
                             labelText: "Beneficiary Swift code",
                             validator: (validator){}),

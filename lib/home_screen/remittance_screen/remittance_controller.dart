@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:ramad_pay/model/remittance_list_model.dart';
 import '../../model/basic_list_model.dart';
@@ -64,6 +65,23 @@ class RemittanceController extends GetxController with StateMixin{
     });
   }
 
+  DataModel beneficiary = DataModel(key: '', value: '');
+  DataModel sendingCitySelected = DataModel(key: '', value: '');
+  DataModel selectedAgency = DataModel(key: '', value: '');
+  DataModel payOutCurrencySelected = DataModel(key: '', value: '');
+  TextEditingController exchangeRate = TextEditingController();
+  DataModel receiverModeOfPayment = DataModel(key: '', value: '');
+  DataModel purpose = DataModel(key: '', value: '');
+  DataModel sourceOfIncomeSelected = DataModel(key: '', value: '');
+  TextEditingController payOutAmount = TextEditingController();
+  TextEditingController ramadCommission = TextEditingController();
+  TextEditingController totalAmount = TextEditingController();
+  TextEditingController benAccountNum = TextEditingController();
+  TextEditingController benAccountTitle = TextEditingController();
+  TextEditingController benBankName = TextEditingController();
+  TextEditingController benBankAddress = TextEditingController();
+  TextEditingController benSwiftCode = TextEditingController();
+
   void addRemittance(var data)async{
     //{
     //     "TransId": 0, //not required autp
@@ -102,6 +120,6 @@ class RemittanceController extends GetxController with StateMixin{
     var data = {
 
     };
-    _service.postRemittance(data)
+    _service.postRemittance(data);
   }
 }
