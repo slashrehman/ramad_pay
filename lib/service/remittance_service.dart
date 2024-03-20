@@ -1,3 +1,4 @@
+import 'package:ramad_pay/model/base_response_model.dart';
 import 'package:ramad_pay/model/get_paymode_currency_model.dart';
 
 import '../helpers/api_base_helpers.dart';
@@ -62,11 +63,13 @@ class RemittanceService{
     return remittanceLookUpValues;
   }
 
-  void postRemittance(var data)async{
+  Future<BaseResponseModel> postRemittance(var data)async{
     final response = await _service.httpRequest(
-        endPoint: EndPoints.postRemittance,
+        endPoint: EndPoints.addEditRemittance,
         requestType: postRequest,
         requestBody: data,
         params: '');
+    BaseResponseModel  responseModel = baseResponseModel(response.body);
+    return responseModel;
   }
 }

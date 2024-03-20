@@ -10,6 +10,7 @@ import '../../../app_basics/images.dart';
 import '../../../utils/loading_dialog.dart';
 import '../../../utils/text_styles.dart';
 import '../../../widgets/app_back_button.dart';
+import '../../../widgets/custom_drop_down.dart';
 import '../documents_screen/add_documents_controller.dart';
 
 class AddDocumentsScreen extends StatelessWidget {
@@ -164,54 +165,6 @@ class AddDocumentsScreen extends StatelessWidget {
                     buttonText: "Upload",
                   )
                 ]))),
-      ),
-    );
-  }
-}
-
-class CustomDropDown extends StatelessWidget {
-  Function(DataModel) onSelected;
-  List<DataModel> list;
-  String title;
-  CustomDropDown({
-    super.key,
-    required this.onSelected,
-    required this.list,
-    required this.title
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownMenuTheme(
-      data: DropdownMenuThemeData(
-          menuStyle: MenuStyle(
-              surfaceTintColor:
-                  MaterialStateColor.resolveWith((states) => Colors.white),
-              backgroundColor:
-                  MaterialStateColor.resolveWith((states) => Colors.white),
-              shape: MaterialStateProperty.resolveWith(
-                  (states) => RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ))),
-          inputDecorationTheme: InputDecorationTheme(
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(12)))),
-      child: DropdownMenu<DataModel>(
-          expandedInsets: const EdgeInsets.symmetric(horizontal: 8),
-          onSelected: (value) => onSelected(value!),
-          label:  Text(title),
-          dropdownMenuEntries:
-              List.generate(list.length, (index) {
-            return (DropdownMenuEntry(
-              label: "${list[index].value}",
-              value: list[index],
-              labelWidget: Text("${list[index].value}", maxLines: 10,  overflow: TextOverflow.ellipsis, textWidthBasis: TextWidthBasis.longestLine,
-              style: TextStyle(overflow: TextOverflow.ellipsis, ),
-              ),
-            ));
-          }),
       ),
     );
   }

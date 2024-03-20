@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ramad_pay/app_basics/app_routes.dart';
 import 'package:ramad_pay/home_screen/remittance_screen/remittance_controller.dart';
+import 'package:ramad_pay/utils/utils.dart';
 import '../app_basics/colors.dart';
 import '../helpers/shared_pref_helper.dart';
 import '../utils/text_styles.dart';
@@ -54,25 +55,99 @@ class RemittanceScreen extends StatelessWidget {
                     // SizedBox(width: 8),
                     RichText(
                       text: TextSpan(
-                          text: "${controller.remittanceList[index].beneficiaryAccountTitle} ",
-                          style: subHeadingTextStyle,
+                          text: "Transaction id \n",
+                          style: grey16W500(),
+                          // style: subHeadingTextStyle,
                           children: [
                             TextSpan(
-                              text: "\n${controller.remittanceList[index].beneficiaryBankName}",
-                              style: grey16W500(),
+                              text: "${controller.remittanceList[index].transId}",
+                              style: subHeadingTextStyle,
                             )
                           ]
                       ),
                     ),
                     Spacer(),
-                    // IconButton(
-                    //   onPressed: (){
-                    //     showSnackBar("Click to transfer money");
-                    //   },
-                    //   icon: SvgPicture.asset(sendMoney, height: 28,
-                    //     width: 28,
-                    //     color: greenShade,),
-                    // )
+                    RichText(
+                      text: TextSpan(
+                          text: "Corr Agency  \n",
+                          style: grey16W500(),
+                          // style: subHeadingTextStyle,
+                          children: [
+                            TextSpan(
+                              text: "${controller.remittanceList[index].corrAgencyCode}",
+                              style: subHeadingTextStyle,
+                            )
+                          ]
+                      ),
+                    ),
+                  ],
+                ),
+                widgetVerticalPadding,
+                Row(
+                  children: [
+                    // buildProfileAvatar(borderRadius: 16),
+                    // SizedBox(width: 8),
+                    RichText(
+                      text: TextSpan(
+                          text: "Ben id \n",
+                          style: grey16W500(),
+                          // style: subHeadingTextStyle,
+                          children: [
+                            TextSpan(
+                              text: "${controller.remittanceList[index].beneficiaryId}",
+                              style: subHeadingTextStyle,
+                            )
+                          ]
+                      ),
+                    ),
+                    Spacer(),
+                    RichText(
+                      text: TextSpan(
+                          text: "Sending City  \n",
+                          style: grey16W500(),
+                          // style: subHeadingTextStyle,
+                          children: [
+                            TextSpan(
+                              text: "${controller.remittanceList[index].sendingCity}",
+                              style: subHeadingTextStyle,
+                            )
+                          ]
+                      ),
+                    ),
+                  ],
+                ),
+                widgetVerticalPadding,
+                Row(
+                  children: [
+                    // buildProfileAvatar(borderRadius: 16),
+                    // SizedBox(width: 8),
+                    RichText(
+                      text: TextSpan(
+                          text: "Pay out Amount \n",
+                          style: grey16W500(),
+                          // style: subHeadingTextStyle,
+                          children: [
+                            TextSpan(
+                              text: "${controller.remittanceList[index].payoutAmount}",
+                              style: subHeadingTextStyle,
+                            )
+                          ]
+                      ),
+                    ),
+                    Spacer(),
+                    RichText(
+                      text: TextSpan(
+                          text: "Total Amount  \n",
+                          style: grey16W500(),
+                          // style: subHeadingTextStyle,
+                          children: [
+                            TextSpan(
+                              text: "${controller.remittanceList[index].totalAmount}",
+                              style: subHeadingTextStyle,
+                            )
+                          ]
+                      ),
+                    ),
                   ],
                 ),
               ],

@@ -8,12 +8,13 @@ import 'package:ramad_pay/utils/text_styles.dart';
 import 'package:ramad_pay/utils/utils.dart';
 import 'package:ramad_pay/widgets/profile_avatar.dart';
 
+import '../../helpers/shared_pref_helper.dart';
 import '../../widgets/app_back_button.dart';
 import '../../widgets/profile_tile_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   final controller = Get.put(ProfileController());
-
+  final SharedPref _sharedPref = SharedPref();
   ProfileScreen({super.key});
 
   @override
@@ -30,7 +31,14 @@ class ProfileScreen extends StatelessWidget {
                 controller.loadEditProfileData();
                 Get.toNamed(AppRoutes.editProfileScreen);
               },
-              icon: const Icon(Icons.edit_rounded))
+              icon: const Icon(Icons.edit_rounded)),
+          IconButton(
+              onPressed: () {
+                Get.deleteAll();
+                _sharedPref.remove(SharedPref.accessToken);
+                Get.offAllNamed(AppRoutes.loginScreen);
+              },
+              icon: const Icon(Icons.logout_outlined, semanticLabel: "Logout",))
         ],
         leading: const AppBackButton(),
         leadingWidth: 35,

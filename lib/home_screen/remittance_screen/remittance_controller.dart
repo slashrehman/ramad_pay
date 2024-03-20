@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:ramad_pay/model/remittance_list_model.dart';
+import 'package:ramad_pay/utils/snack_bar.dart';
+import '../../app_basics/app_routes.dart';
 import '../../model/basic_list_model.dart';
 import '../../service/remittance_service.dart';
 
@@ -18,7 +20,7 @@ class RemittanceController extends GetxController with StateMixin{
   RxList<DataModel> corrAgencyCode = <DataModel>[].obs;
   RxList<DataModel> payOutCurrency = <DataModel>[].obs;
   RxList<DataModel> payMode = <DataModel>[].obs;
-
+  RxBool isBank = false.obs;
   @override
   void onInit() {
     getRemittanceList().then((value) {
@@ -82,7 +84,7 @@ class RemittanceController extends GetxController with StateMixin{
   TextEditingController benBankAddress = TextEditingController();
   TextEditingController benSwiftCode = TextEditingController();
 
-  void addRemittance(var data)async{
+  void addRemittance()async{
     //{
     //     "TransId": 0, //not required autp
     //     "TrDate": null,//not required
@@ -119,7 +121,62 @@ class RemittanceController extends GetxController with StateMixin{
     // }
     var data = {
 
+          "TransId": 0, //not required autp
+          "TrDate": null,//not required
+          "CorrId": 0,//not required
+          "CorrAgencyCode": selectedAgency.key,
+          "SenderId": 0,// not required will take from login
+          "BeneficiaryId": beneficiary.key, //lookup beneficiaries
+          "SendingCity": sendingCitySelected.key, //benCities
+          "Purpose": purpose.key, //from lookupvalues purposes
+          "PurposeDescription": "", //if 'Purpose').value === '7'
+          "SourceOfIncome": sourceOfIncomeSelected.key,//from lookupvalues IncSource
+          "PayoutCurrency": payOutCurrencySelected.key, //from agemt currency
+          "PayoutAmount": payOutAmount.text,
+          "ExchRate": exchangeRate.text, //from agent currency
+          "TotalAmount": totalAmount.text,
+          "RamadCommision": ramadCommission.text, //5% of total temporary
+          "ReceiverModeOfPayment": receiverModeOfPayment.key, //from agen paymode
+          "SenderModeOfPayment": 0,// not required
+          "Remarks": "", // default not required
+          "SenderAccountNo": null, //required only ReceiverModeOfPayment ==2
+          "SenderAccountTitle": null,//required only ReceiverModeOfPayment=2
+          "SenderAccountCurrency": null,//required only ReceiverModeOfPayment=2
+          "BeneficiaryAccountNo": benAccountNum.text,//required only ReceiverModeOfPayment=2 or 3
+          "BeneficiaryAccountTitle": benAccountTitle.text,//required only ReceiverModeOfPayment=2 or 3
+          "BeneficiaryAccountCurrency": null,//required only ReceiverModeOfPayment=2
+          "BeneficiaryBankName": benBankName.text,//required only ReceiverModeOfPayment=3
+          "BeneficiaryBankAddress": benBankAddress.text,//required only ReceiverModeOfPayment= 3
+          "BeneficiarySwiftCode": benSwiftCode.text,//required only ReceiverModeOfPayment=2 or 3
+          "BeneficiaryBranchName": "",//required only ReceiverModeOfPayment= 4
+          "BeneficaryBankCountry": "",//required only ReceiverModeOfPayment=4
+          "BeneficiaryIFSC": null,
+          "CorrTrRefrenace": "",
+          "CorrTrStatus": ""
+
     };
-    _service.postRemittance(data);
+    print("${data}");
+    _service.postRemittance(data).then((value) {
+      if(value.status){
+        //close dialog
+        Get.back();
+        showSnackBar("${value.message}");
+        getRemittanceList().then((value) {
+          Get.back();
+        });
+
+      }else{
+        Get.back();
+        showSnackBar("${value.message}");
+      }
+    });
+  }
+
+  void calculateCommission(int value){
+    dynamic commission= value * .05;
+    dynamic totalNetAmount = value+ commission;
+    ramadCommission.text = commission.toString();
+    totalAmount.text = totalNetAmount.toString();
+    print("sss");
   }
 }

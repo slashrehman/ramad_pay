@@ -7,8 +7,7 @@ import '../../app_basics/colors.dart';
 import '../../app_basics/formValidator.dart';
 import '../../app_basics/text_field.dart';
 import '../../utils/loading_dialog.dart';
-import '../../widgets/clickable_svg.dart';
-import '../profile/documents_screen/add_documents_screen.dart';
+import '../../widgets/custom_drop_down.dart';
 import 'beneficiaries_controller.dart';
 class AddBeneficiariesScreen extends StatelessWidget {
   final _key = GlobalKey<FormState>();
@@ -193,10 +192,7 @@ class AddBeneficiariesScreen extends StatelessWidget {
               Obx(
                     ()=>  CustomDropDown(
                       onSelected: (value) {
-                        // controller.selectedDocument = value;
-                        // controller.image = File('');
-                        // controller.imagePath('');
-                        // controller.fileTitle.value = '${value.value} Image';
+                        controller.occupation.text = value.value;
                       },
                       list: controller.occupations.value,
                       title: "Occupation",

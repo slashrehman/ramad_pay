@@ -28,6 +28,7 @@ enum EndPoints {
   getAgencyCode('remitt/getAgent?'),
   getPayModeCurrency('remitt/getAgentPayModeCurrency?'),
   postRemittance('remitt/PostRemitance'),
+  addEditRemittance('remitt/addEditRemittance'),
 
   //Juba
   getBenSendingCity('juba/getBenCities?'),
