@@ -31,7 +31,7 @@ class BeneficiariesController extends GetxController with StateMixin{
   RxList<DataModel> countryStates = <DataModel>[].obs;
   RxList<DataModel> occupations = <DataModel>[].obs;
 
-  void loadInitialData(){
+  Future loadInitialData() async {
     change(null, status: RxStatus.loading());
     _service.getBeneficiariesList().then((beneficiariesData) {
       if(beneficiariesData.status!){
@@ -105,6 +105,9 @@ class BeneficiariesController extends GetxController with StateMixin{
       if(value){
         Get.back();
         showSnackBar("Beneficiary Added!");
+        loadInitialData().then((value) {
+          Get.back();
+        });
       }else{
         Get.back();
         printInConsole(data: "Error in add beneficiaries");
