@@ -20,7 +20,6 @@ const String multipartRequest = "MULTIPART";
 class ApiBaseHelper {
 
 
-  final SharedPref _sharedPref = SharedPref();
   final exceptionController = Get.put(ExceptionController());
   Future<dynamic> httpRequest(
       {required EndPoints endPoint,
@@ -29,7 +28,7 @@ class ApiBaseHelper {
         File? filePath,
         required String params}) async {
     printInConsole(data: '$requestType : ${endPoint.url} ${jsonEncode(requestBody)}');
-    var token = await _sharedPref.readString(SharedPref.accessToken??"");
+    var token = await SharedPref.instance.readString(SharedPref.accessToken??"");
     try {
       final headers = getHeaders(token: token);
       printInConsole(data:

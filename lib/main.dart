@@ -16,8 +16,7 @@ void main() async{
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-  final SharedPref _sharedPref = SharedPref();
-  var token = await _sharedPref.readString(SharedPref.accessToken);
+  var token = await SharedPref.instance.readString(SharedPref.accessToken);
   runApp( MyApp(token:token));
 }
 
@@ -36,8 +35,8 @@ class MyApp extends StatelessWidget {
       ),
       getPages: AppRoutes.appNamedRoutes,
       color: primaryMaterialColor,
-      // home: token == '' || token =="null" ? LoginScreen() : MainScreen(),
-      home: VerifyBioMetricScreen()
+      home: token == '' || token =="null" ? LoginScreen() : VerifyBioMetricScreen(),
+      // home: VerifyBioMetricScreen()
       // home: ProfileScreen(),
       // home:  EditProfileScreen(),
     );

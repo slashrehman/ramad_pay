@@ -17,8 +17,8 @@ class LoginSuccessModel  extends BaseResponseModel{
   factory LoginSuccessModel.fromJson(Map<String, dynamic> json) => LoginSuccessModel(
     data: Data.fromJson(json["data"]),
     timestamp: DateTime.parse(json["timestamp"]),
+    message: json["message"],
     status: json["status"],
-    message: json["message"]
   );
 }
 

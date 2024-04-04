@@ -7,7 +7,12 @@ class SharedPref {
   static const String tokenKey = "userToken";
   static const  String accessToken = "accessToken";
   static const  String refreshToken = "refreshToken";
+  static const  String name = "name";
+  static const  String userName = "userName";
   static const String themeKey = "DarkTheme";
+  SharedPref._privateConstructor();
+
+  static final SharedPref instance = SharedPref._privateConstructor();
 
   readObject(String key) async {
     final prefs = await SharedPreferences.getInstance();

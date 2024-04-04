@@ -14,7 +14,6 @@ import '../../widgets/profile_tile_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
   final controller = Get.put(ProfileController());
-  final SharedPref _sharedPref = SharedPref();
   ProfileScreen({super.key});
 
   @override
@@ -35,7 +34,8 @@ class ProfileScreen extends StatelessWidget {
           IconButton(
               onPressed: () {
                 Get.deleteAll();
-                _sharedPref.remove(SharedPref.accessToken);
+
+                SharedPref.instance.remove(SharedPref.accessToken);
                 Get.offAllNamed(AppRoutes.loginScreen);
               },
               icon: const Icon(Icons.logout_outlined, semanticLabel: "Logout",))

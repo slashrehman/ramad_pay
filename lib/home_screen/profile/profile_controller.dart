@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ramad_pay/app_basics/display_text.dart';
+import 'package:ramad_pay/helpers/shared_pref_helper.dart';
 import 'package:ramad_pay/model/basic_list_model.dart';
 import 'package:intl/intl.dart';
 import 'package:ramad_pay/utils/print_console.dart';
@@ -73,6 +74,7 @@ UserProfileModel? userProfileModel;
    city = TextEditingController(text: userProfileModel.data.cust.city??'');
    occupation = TextEditingController(text: userProfileModel.data.cust.occupation??'');
   refNumber = userProfileModel.data.cust.refNo.toString();
+  SharedPref.instance.saveString(SharedPref.name, firstName!.text);
   change(null,status: RxStatus.success());
 }
 

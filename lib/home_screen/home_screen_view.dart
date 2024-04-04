@@ -81,37 +81,37 @@ class HomeScreenView extends StatelessWidget {
                   children: [
                     IntrinsicHeight(
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           TextButton.icon(
                             icon: const Icon(Icons.keyboard_double_arrow_up, color: primaryColor,),
                             label: RichText(
                               text: TextSpan(
                                 text: "Balance",
-                                style: grey14W500(),
+                                style: grey12W600(),
                                 children: [
                                   TextSpan(
-                                    text: "\n\$2000.00",
-                                    style: subHeadingTextStyle
+                                    text: "\n\$2000",
+                                    style: subHeadingTextStyle.copyWith(fontSize: 16)
                                   )
                                 ]
                               ),
                             ),
                             onPressed: (){},
                           ),
-                          SizedBox(width: 16),
+                          SizedBox(width: 8),
                           const VerticalDivider(color: grey400Color, indent: 8, endIndent: 8, width: 2.0,),
-                          SizedBox(width: 16,),
+                          SizedBox(width: 8,),
                           TextButton.icon(
                             icon: const Icon(Icons.keyboard_double_arrow_down, color: Colors.redAccent,),
                             label: RichText(
                               text: TextSpan(
                                   text: "History",
-                                  style: grey14W500(),
+                                  style: grey12W600(),
                                   children: [
                                     TextSpan(
-                                        text: "\n\$1890.00",
-                                        style: subHeadingTextStyle
+                                        text: "\n\$1890",
+                                        style: subHeadingTextStyle.copyWith(fontSize: 16)
                                     )
                                   ]
                               ),
@@ -121,13 +121,13 @@ class HomeScreenView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 10,),
+                    const SizedBox(height: 8,),
                     Align(
                         alignment: Alignment.topLeft,
-                        child: Text("You Spent \$1494.5 this month\n Let's see cost statistics for this period", style: grey14W500(),)),
-                    const SizedBox(height: 4,),
+                        child: Text("You spent \$1494.5 this month let's see cost statistics for this period", style: grey12W500(),)),
+                    const SizedBox(height: 2,),
                     const Divider(indent: 8, color: grey400Color,),
-                    const SizedBox(height: 4,),
+                    const SizedBox(height: 2,),
                     Align(
                         alignment: Alignment.centerRight,
                         child: Text("View Details", style: primaryColor14W500(),))
@@ -149,18 +149,18 @@ class HomeScreenView extends StatelessWidget {
                     const SizedBox(height: 8,),
                     Row(
                       children: [
-                        buildActivityButton(Icons.credit_card, "My Card",
-                            Colors.blue.withOpacity(0.2), const Color(0XFF01579B)),
+                        buildActivityButton(Icons.credit_card, "Send Transfer",
+                            Colors.blue.withOpacity(0.2), const Color(0XFF01579B), onTap: (){}),
                         buildActivityButton(
                             Icons.transfer_within_a_station,
-                            "Send money",
+                            "Mobile Transfer",
                             Colors.cyanAccent.withOpacity(0.2),
-                            const Color(0XFF0097A7)),
+                            const Color(0XFF0097A7), onTap: (){}),
                         buildActivityButton(
                             Icons.bar_chart,
-                            "  Transaction\n  Status",
+                            "My Transfers",
                             const Color(0XFFD7CCC8).withOpacity(0.4),
-                            const Color(0XFF9499B7)),
+                            const Color(0XFF9499B7), onTap: (){}),
                       ],
                     ),
                     const SizedBox(height: 8),
@@ -172,12 +172,7 @@ class HomeScreenView extends StatelessWidget {
                       height: 10,
                     ),
                     buildCategoryCard(Icons.fastfood, "Sent", 120, 20),
-                    buildCategoryCard(Icons.flash_on, "Status of Transfers", 430, 17),
-                    // buildCategoryCard(Icons.flash_on, "Utilities", 430, 17),
-                    // buildCategoryCard(Icons.flash_on, "Utilities", 430, 17),
-                    // buildCategoryCard(Icons.flash_on, "Utilities", 430, 17),
-                    // buildCategoryCard(Icons.flash_on, "Utilities", 430, 17),
-                    // buildCategoryCard(Icons.fastfood, "Food", 120, 20),
+                    buildCategoryCard(Icons.flash_on, "Status Transfers", 43, 17),
                   ],
                 ),
               ),

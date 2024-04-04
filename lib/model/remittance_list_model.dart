@@ -27,7 +27,6 @@ class RemittanceListModel {
   Map<String, dynamic> toJson() => {
     "status": status,
     "message": message,
-    "data": data == null ? [] : List<dynamic>.from(data!.map((x) => x.toJson())),
     "timestamp": timestamp?.toIso8601String(),
   };
 }
@@ -35,151 +34,79 @@ class RemittanceListModel {
 class RemittanceData {
   int? transId;
   DateTime? trDate;
-  int? corrId;
-  String? corrAgencyCode;
-  int? senderId;
-  int? beneficiaryId;
-  String? sendingCity;
-  int? purpose;
-  String? purposeDescription;
-  int? sourceOfIncome;
-  dynamic sourceOfIncomeDescription;
+  String? benName;
+  String? country;
+  String? mobile;
+  dynamic amount;
   String? payoutCurrency;
   dynamic payoutAmount;
   dynamic exchRate;
-  dynamic totalAmount;
-  dynamic ramadCommision;
-  dynamic receiverModeOfPayment;
-  String? remarks;
-  dynamic senderAccountNo;
-  dynamic senderAccountTitle;
-  dynamic senderAccountCurrency;
-  dynamic beneficiaryAccountNo;
-  dynamic beneficiaryAccountTitle;
-  dynamic beneficiaryAccountCurrency;
-  dynamic beneficiaryBankName;
-  dynamic beneficiaryBankAddress;
-  String? beneficiarySwiftCode;
-  String? beneficiaryBranchName;
-  String? beneficaryBankCountry;
-  dynamic beneficiaryIfsc;
-  String? corrTrRefrenace;
-  String? corrTrStatus;
-  dynamic senderModeOfPayment;
-  dynamic payToken;
-  dynamic statusText;
 
   RemittanceData({
     this.transId,
     this.trDate,
-    this.corrId,
-    this.corrAgencyCode,
-    this.senderId,
-    this.beneficiaryId,
-    this.sendingCity,
-    this.purpose,
-    this.purposeDescription,
-    this.sourceOfIncome,
-    this.sourceOfIncomeDescription,
+    this.benName,
+    this.country,
+    this.mobile,
+    this.amount,
     this.payoutCurrency,
     this.payoutAmount,
     this.exchRate,
-    this.totalAmount,
-    this.ramadCommision,
-    this.receiverModeOfPayment,
-    this.remarks,
-    this.senderAccountNo,
-    this.senderAccountTitle,
-    this.senderAccountCurrency,
-    this.beneficiaryAccountNo,
-    this.beneficiaryAccountTitle,
-    this.beneficiaryAccountCurrency,
-    this.beneficiaryBankName,
-    this.beneficiaryBankAddress,
-    this.beneficiarySwiftCode,
-    this.beneficiaryBranchName,
-    this.beneficaryBankCountry,
-    this.beneficiaryIfsc,
-    this.corrTrRefrenace,
-    this.corrTrStatus,
-    this.senderModeOfPayment,
-    this.payToken,
-    this.statusText,
   });
 
   factory RemittanceData.fromJson(Map<String, dynamic> json) => RemittanceData(
     transId: json["TransId"],
     trDate: json["TrDate"] == null ? null : DateTime.parse(json["TrDate"]),
-    corrId: json["CorrId"],
-    corrAgencyCode: json["CorrAgencyCode"],
-    senderId: json["SenderId"],
-    beneficiaryId: json["BeneficiaryId"],
-    sendingCity: json["SendingCity"],
-    purpose: json["Purpose"],
-    purposeDescription: json["PurposeDescription"],
-    sourceOfIncome: json["SourceOfIncome"],
-    sourceOfIncomeDescription: json["SourceOfIncomeDescription"],
+    benName: json["BenName"],
+    country: json["Country"],
+    mobile: json["Mobile"],
+    amount: json["Amount"]?.toDouble(),
     payoutCurrency: json["PayoutCurrency"],
     payoutAmount: json["PayoutAmount"],
-    exchRate: json["ExchRate"],
-    totalAmount: json["TotalAmount"],
-    ramadCommision: json["RamadCommision"],
-    receiverModeOfPayment: json["ReceiverModeOfPayment"],
-    remarks: json["Remarks"],
-    senderAccountNo: json["SenderAccountNo"],
-    senderAccountTitle: json["SenderAccountTitle"],
-    senderAccountCurrency: json["SenderAccountCurrency"],
-    beneficiaryAccountNo: json["BeneficiaryAccountNo"],
-    beneficiaryAccountTitle: json["BeneficiaryAccountTitle"],
-    beneficiaryAccountCurrency: json["BeneficiaryAccountCurrency"],
-    beneficiaryBankName: json["BeneficiaryBankName"],
-    beneficiaryBankAddress: json["BeneficiaryBankAddress"],
-    beneficiarySwiftCode: json["BeneficiarySwiftCode"],
-    beneficiaryBranchName: json["BeneficiaryBranchName"],
-    beneficaryBankCountry: json["BeneficaryBankCountry"],
-    beneficiaryIfsc: json["BeneficiaryIFSC"],
-    corrTrRefrenace: json["CorrTrRefrenace"],
-    corrTrStatus: json["CorrTrStatus"],
-    senderModeOfPayment: json["SenderModeOfPayment"],
-    payToken: json["PayToken"],
-    statusText: json["StatusText"],
+    exchRate: json["ExchRate"]?.toDouble(),
   );
-
-  Map<String, dynamic> toJson() => {
-    "TransId": transId,
-    "TrDate": trDate?.toIso8601String(),
-    "CorrId": corrId,
-    "CorrAgencyCode": corrAgencyCode,
-    "SenderId": senderId,
-    "BeneficiaryId": beneficiaryId,
-    "SendingCity": sendingCity,
-    "Purpose": purpose,
-    "PurposeDescription": purposeDescription,
-    "SourceOfIncome": sourceOfIncome,
-    "SourceOfIncomeDescription": sourceOfIncomeDescription,
-    "PayoutCurrency": payoutCurrency,
-    "PayoutAmount": payoutAmount,
-    "ExchRate": exchRate,
-    "TotalAmount": totalAmount,
-    "RamadCommision": ramadCommision,
-    "ReceiverModeOfPayment": receiverModeOfPayment,
-    "Remarks": remarks,
-    "SenderAccountNo": senderAccountNo,
-    "SenderAccountTitle": senderAccountTitle,
-    "SenderAccountCurrency": senderAccountCurrency,
-    "BeneficiaryAccountNo": beneficiaryAccountNo,
-    "BeneficiaryAccountTitle": beneficiaryAccountTitle,
-    "BeneficiaryAccountCurrency": beneficiaryAccountCurrency,
-    "BeneficiaryBankName": beneficiaryBankName,
-    "BeneficiaryBankAddress": beneficiaryBankAddress,
-    "BeneficiarySwiftCode": beneficiarySwiftCode,
-    "BeneficiaryBranchName": beneficiaryBranchName,
-    "BeneficaryBankCountry": beneficaryBankCountry,
-    "BeneficiaryIFSC": beneficiaryIfsc,
-    "CorrTrRefrenace": corrTrRefrenace,
-    "CorrTrStatus": corrTrStatus,
-    "SenderModeOfPayment": senderModeOfPayment,
-    "PayToken": payToken,
-    "StatusText": statusText,
-  };
 }
+
+// enum BenName {
+//   ABDUL_KOTTLUNGAL,
+//   ABDUL_RAHMAN,
+//   ALI_MOSMED
+// }
+//
+// final benNameValues = EnumValues({
+//   "Abdul Kottlungal": BenName.ABDUL_KOTTLUNGAL,
+//   "Abdul Rahman": BenName.ABDUL_RAHMAN,
+//   "Ali Mosmed": BenName.ALI_MOSMED
+// });
+//
+// enum Country {
+//   UNITED_ARAB_EMIRATES,
+//   UNITED_STATES
+// }
+//
+// final countryValues = EnumValues({
+//   "UNITED ARAB EMIRATES": Country.UNITED_ARAB_EMIRATES,
+//   "UNITED STATES": Country.UNITED_STATES
+// });
+//
+// enum PayoutCurrency {
+//   AED,
+//   USD
+// }
+//
+// final payoutCurrencyValues = EnumValues({
+//   "AED": PayoutCurrency.AED,
+//   "USD": PayoutCurrency.USD
+// });
+//
+// class EnumValues<T> {
+//   Map<String, T> map;
+//   late Map<T, String> reverseMap;
+//
+//   EnumValues(this.map);
+//
+//   Map<T, String> get reverse {
+//     reverseMap = map.map((k, v) => MapEntry(v, k));
+//     return reverseMap;
+//   }
+// }

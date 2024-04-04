@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:ramad_pay/app_basics/app_routes.dart';
 import 'package:ramad_pay/auth/biometric_screen_controller.dart';
 import 'package:ramad_pay/utils/text_styles.dart';
 import 'package:ramad_pay/widgets/profile_avatar.dart';
@@ -43,7 +44,7 @@ class VerifyBioMetricScreen extends StatelessWidget {
               height: 4,
             ),
             Text(
-              "Welcome, Ali",
+              "Welcome, ${biometricController.name.value}",
               style: TextStyle(
                   fontSize: 24.0, color: greyColor, fontWeight: FontWeight.w700),
             ),
@@ -88,18 +89,23 @@ class VerifyBioMetricScreen extends StatelessWidget {
               onTap: (){
                 if(_formKey.currentState!.validate()){
                   showLoadingDialog(context);
-                  // loginController.loginUser();
+                  biometricController.loginUser();
                 }
               },
               buttonText: "Login",
             ),
             SizedBox(height: 60,),
-            Row(
-              children: [
-                buildProfileAvatar(borderRadius: 100),
-                SizedBox(width: 8,),
-                Text("Switch to another user", style: subHeadingTextStyle.copyWith(color: greenShade),),
-              ],
+            GestureDetector(
+              onTap: (){
+                Get.toNamed(AppRoutes.loginScreen);
+              },
+              child: Row(
+                children: [
+                  buildProfileAvatar(borderRadius: 100),
+                  SizedBox(width: 8,),
+                  Text("Switch to another user", style: subHeadingTextStyle.copyWith(color: greenShade),),
+                ],
+              ),
             ),
             SizedBox(height: 24),
             GestureDetector(

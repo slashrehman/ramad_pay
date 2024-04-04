@@ -20,12 +20,25 @@ TextStyle  black16W600  = const TextStyle(
   color: blackColor,
   fontSize: 18,
 );
+TextStyle  black14W700  = const TextStyle(
+  fontWeight: FontWeight.w700,
+  color: blackColor,
+  fontSize: 14,
+);
 TextStyle grey12W500() {
   return GoogleFonts.inter(
     textStyle: TextStyle(
         color:  greyColor,
         fontSize: 12,
         fontWeight: FontWeight.w500),
+  );
+}
+TextStyle grey12W600() {
+  return GoogleFonts.inter(
+    textStyle: TextStyle(
+        color:  greyColor,
+        fontSize: 12,
+        fontWeight: FontWeight.w600),
   );
 }
 TextStyle primaryColor14W500() {

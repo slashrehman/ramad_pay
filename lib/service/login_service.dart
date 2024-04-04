@@ -9,8 +9,8 @@ import '../utils/end_points.dart';
 
 class LoginService{
   final ApiBaseHelper _service = ApiBaseHelper();
-  final SharedPref _sharedPref =  SharedPref();
   Future<bool> loginUser({required var requestBody}) async {
+    LoginSuccessModel? loginSuccessModel;
     try {
       final response = await _service.httpRequest(
           endPoint: EndPoints.login,
@@ -18,16 +18,18 @@ class LoginService{
           requestBody: requestBody,
           params: "");
       final parsed = json.decode(response.body);
-      LoginSuccessModel loginSuccessModel = loginSuccessModelFromJson(response.body);
+       loginSuccessModel = loginSuccessModelFromJson(response.body);
       if(loginSuccessModel.status){
-        _sharedPref.saveString(SharedPref.accessToken, loginSuccessModel.data.accesstoken);
-        _sharedPref.saveString(SharedPref.refreshToken, loginSuccessModel.data.refreshtoken);
+        SharedPref.instance.saveString(SharedPref.accessToken, loginSuccessModel.data.accesstoken);
+        SharedPref.instance.saveString(SharedPref.refreshToken, loginSuccessModel.data.refreshtoken);
         return true;
       }else{
         showSnackBar(loginSuccessModel.message!);
         return false;
       }
     } catch (e) {
+      showSnackBar("Invalid email/Password");
+      print("Exception");
       return false;
     }
   }

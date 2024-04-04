@@ -10,8 +10,6 @@ import '../widgets/add_icon_widget.dart';
 
 class RemittanceScreen extends StatelessWidget {
   RemittanceScreen({super.key});
-
-  final SharedPref _sharedPref = SharedPref();
   final controller = Get.put(RemittanceController());
 
   @override
@@ -55,13 +53,13 @@ class RemittanceScreen extends StatelessWidget {
                     // SizedBox(width: 8),
                     RichText(
                       text: TextSpan(
-                          text: "Transaction id \n",
-                          style: grey16W500(),
+                          text: "Ben Name \n",
+                          style: grey12W500(),
                           // style: subHeadingTextStyle,
                           children: [
                             TextSpan(
-                              text: "${controller.remittanceList[index].transId}",
-                              style: subHeadingTextStyle,
+                              text: "${controller.remittanceList[index].benName}",
+                              style: black14W700,
                             )
                           ]
                       ),
@@ -69,13 +67,13 @@ class RemittanceScreen extends StatelessWidget {
                     Spacer(),
                     RichText(
                       text: TextSpan(
-                          text: "Corr Agency  \n",
-                          style: grey16W500(),
+                          text: "Payout Currency \n",
+                          style: grey12W500(),
                           // style: subHeadingTextStyle,
                           children: [
                             TextSpan(
-                              text: "${controller.remittanceList[index].corrAgencyCode}",
-                              style: subHeadingTextStyle,
+                              text: "${controller.remittanceList[index].payoutCurrency}",
+                              style: black14W700,
                             )
                           ]
                       ),
@@ -89,13 +87,13 @@ class RemittanceScreen extends StatelessWidget {
                     // SizedBox(width: 8),
                     RichText(
                       text: TextSpan(
-                          text: "Ben id \n",
-                          style: grey16W500(),
+                          text: "Ben Country \n",
+                          style: grey12W500(),
                           // style: subHeadingTextStyle,
                           children: [
                             TextSpan(
-                              text: "${controller.remittanceList[index].beneficiaryId}",
-                              style: subHeadingTextStyle,
+                              text: "${controller.remittanceList[index].country}",
+                              style: black14W700,
                             )
                           ]
                       ),
@@ -103,13 +101,13 @@ class RemittanceScreen extends StatelessWidget {
                     Spacer(),
                     RichText(
                       text: TextSpan(
-                          text: "Sending City  \n",
-                          style: grey16W500(),
+                          text: "Transaction Id     \n",
+                          style: grey12W500(),
                           // style: subHeadingTextStyle,
                           children: [
                             TextSpan(
-                              text: "${controller.remittanceList[index].sendingCity}",
-                              style: subHeadingTextStyle,
+                              text: "${controller.remittanceList[index].transId}",
+                              style: black14W700,
                             )
                           ]
                       ),
@@ -124,12 +122,12 @@ class RemittanceScreen extends StatelessWidget {
                     RichText(
                       text: TextSpan(
                           text: "Pay out Amount \n",
-                          style: grey16W500(),
+                          style: grey12W500(),
                           // style: subHeadingTextStyle,
                           children: [
                             TextSpan(
                               text: "${controller.remittanceList[index].payoutAmount}",
-                              style: subHeadingTextStyle,
+                              style: black14W700,
                             )
                           ]
                       ),
@@ -137,13 +135,13 @@ class RemittanceScreen extends StatelessWidget {
                     Spacer(),
                     RichText(
                       text: TextSpan(
-                          text: "Total Amount  \n",
-                          style: grey16W500(),
+                          text: "Total Amount      \n",
+                          style: grey12W500(),
                           // style: subHeadingTextStyle,
                           children: [
                             TextSpan(
-                              text: "${controller.remittanceList[index].totalAmount}",
-                              style: subHeadingTextStyle,
+                              text: "${controller.remittanceList[index].amount}",
+                              style: black14W700,
                             )
                           ]
                       ),
